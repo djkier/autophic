@@ -1,6 +1,7 @@
 package org.automation.informationcontroller;
 
 public class MemberInfo extends GeneralInformation{
+    private String type;
     private String address;
     private String zipCode;
     private String mobileNo;
@@ -8,6 +9,7 @@ public class MemberInfo extends GeneralInformation{
     private String employerName;
 
     public MemberInfo() {
+        this.type = "";
         this.address = "";
         this.zipCode = "";
         this.mobileNo = "";
@@ -15,12 +17,17 @@ public class MemberInfo extends GeneralInformation{
         this.employerName = "";
     }
 
-    public void setInfo(String add, String zip, String moNo, String empNo, String empName) {
+    public void setInfo(String type, String add, String zip, String moNo, String empNo, String empName) {
+        this.type = type;
         this.address = add;
         this.zipCode = zip;
         this.mobileNo = moNo;
         this.employerNo = empNo;
         this.employerName = empName;
+    }
+
+    public String getType() {
+        return this.type;
     }
 
     public String getAddress() {

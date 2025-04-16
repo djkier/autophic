@@ -2,7 +2,6 @@ package org.automation.informationcontroller;
 
 public class GeneralInformation {
     private String id;
-    private String type;
     private String firstName;
     private String middleName;
     private String lastName;
@@ -12,7 +11,6 @@ public class GeneralInformation {
 
     public GeneralInformation(){
         this.id = "";
-        this.type = "";
         this.firstName = "";
         this.middleName ="";
         this.lastName = "";
@@ -21,9 +19,8 @@ public class GeneralInformation {
         this.gender = "";
     }
 
-    public void setGenInfo(String id, String type, String fn, String mn, String ln, String suffix, String date, String gender){
+    public void setGenInfo(String id, String fn, String mn, String ln, String suffix, String date, String gender){
         this.id = id;
-        this.type = type;
         this.firstName = fn;
         this.middleName = mn;
         this.lastName = ln;
@@ -38,10 +35,6 @@ public class GeneralInformation {
 
     public void setId(String str){
         this.id = str;
-    }
-
-    public String getType() {
-        return this.type;
     }
 
     public String getFN(){
