@@ -8,15 +8,19 @@ public class PatientBabyCommon extends GeneralInformation{
     private LocalDate disDay;
     private LocalTime adTime;
     private LocalTime disTime;
+    private String icd;
+    private String rvs;
     private String accreNo;
-    private int hciFee;
-    private int profFee;
+    private double hciFee;
+    private double profFee;
 
     public PatientBabyCommon() {
         this.adDay = LocalDate.now().minusDays(1);
         this.disDay = LocalDate.now();
         this.adTime = LocalTime.now().minusHours(24);
         this.disTime = LocalTime.now();
+        this.icd = "";
+        this.rvs = "";
         this.accreNo = "";
         this.hciFee = 0;
         this.profFee = 0;
@@ -29,16 +33,19 @@ public class PatientBabyCommon extends GeneralInformation{
         this.disTime = disT;
     }
 
+    public void setCode(String icd, String rvs) {
+        this.icd = icd;
+        this.rvs = rvs;
+    }
+
     public void setAccreNo(String acc){
         this.accreNo = acc;
     }
 
-    public void setPayment(int hci, int prof) {
+    public void setPayment(double hci, double prof) {
         this.hciFee = hci;
         this.profFee = prof;
     }
-
-
 
     public LocalDate getAdmissionDate() {
         return adDay;
@@ -60,11 +67,11 @@ public class PatientBabyCommon extends GeneralInformation{
         return accreNo;
     }
 
-    public int getHciFee() {
+    public double getHciFee() {
         return hciFee;
     }
 
-    public int getProfFee() {
+    public double getProfFee() {
         return profFee;
     }
 
