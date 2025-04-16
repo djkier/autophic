@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,20 +13,18 @@ import java.util.List;
 public class Member {
     private final WebDriver driver;
     private final MemberInfo info;
-    private final WebDriverWait wait;
     private boolean existing;
     private final Utils utils;
 
     public Member(WebDriver driver, MemberInfo info, WebDriverWait wait){
         this.driver = driver;
         this.info = info;
-        this.wait = wait;
         this.existing = true;
-        this.utils = new Utils(driver);
+        this.utils = new Utils(driver, wait);
     }
 
     public void memberAction() throws InterruptedException {
-        WebElement memberTab = waitForElement(By.cssSelector("a[href=\"/53/members\""));
+        WebElement memberTab = utils.waitForElement(By.cssSelector("a[href=\"/53/members\""));
         memberTab.click();
 
         if (checkMember()) {
@@ -39,7 +36,7 @@ public class Member {
     }
 
     public boolean checkMember() throws InterruptedException {
-        WebElement inputIdNo = waitForElement(By.cssSelector("input[id=\"q_phic_id_number_start\""));
+        WebElement inputIdNo = utils.waitForElement(By.cssSelector("input[id=\"q_phic_id_number_start\""));
         inputIdNo.sendKeys(info.getId());
         driver.findElement(By.cssSelector("button[type=\"submit\"")).click();
         Thread.sleep(500);
@@ -50,19 +47,19 @@ public class Member {
 
     public void memberExist() {
         By editSelect = By.cssSelector("table tbody tr td:last-of-type a:nth-of-type(2)");
-        WebElement edit = waitForElement(editSelect);
+        WebElement edit = utils.waitForElement(editSelect);
         edit.click();
         editMemberInfo();
     }
 
     public void createNewMember() {
-        WebElement newMember = waitForElement(By.cssSelector("a[href='/53/members/new']"));
+        WebElement newMember = utils.waitForElement(By.cssSelector("a[href='/53/members/new']"));
         newMember.click();
         editMemberInfo();
     }
 
     public void editMemberInfo() {
-        WebElement membershipType = waitForElement(By.id("member_phic_membership_type"));
+        WebElement membershipType = utils.waitForElement(By.id("member_phic_membership_type"));
 
         if (!existing){
             utils.replaceInputValues(By.id("member_phic_id_number"), info.getId());
@@ -86,10 +83,10 @@ public class Member {
         utils.replaceInputValues(By.id("member_employer_name"), info.getEmployerName());
 
         //submit
-        WebElement submit = waitForElement(By.cssSelector("input[name=\"commit\""));
+        WebElement submit = utils.waitForElement(By.cssSelector("input[name=\"commit\""));
         submit.click();
 
-        WebElement mainPage = waitForElement(By.cssSelector("a[href=\"/53/claims\""));
+        WebElement mainPage = utils.waitForElement(By.cssSelector("a[href=\"/53/claims\""));
         mainPage.click();
 
     }
@@ -103,7 +100,4 @@ public class Member {
         }
     }
 
-    public WebElement waitForElement (By element) {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(element));
-    }
 }
