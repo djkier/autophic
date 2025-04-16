@@ -2,6 +2,7 @@ package org.automation.pages;
 
 import org.automation.informationcontroller.MemberInfo;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,12 +16,14 @@ public class Member {
     private final MemberInfo info;
     private final WebDriverWait wait;
     private boolean existing;
+    private final Utils utils;
 
     public Member(WebDriver driver, MemberInfo info, WebDriverWait wait){
         this.driver = driver;
         this.info = info;
         this.wait = wait;
         this.existing = true;
+        this.utils = new Utils(driver);
     }
 
     public void memberAction() throws InterruptedException {
@@ -62,29 +65,25 @@ public class Member {
         WebElement membershipType = waitForElement(By.id("member_phic_membership_type"));
 
         if (!existing){
-            replaceInputValues(By.id("member_phic_id_number"), info.getId());
+            utils.replaceInputValues(By.id("member_phic_id_number"), info.getId());
         }
 
         Select dropDown = new Select(membershipType);
         dropDown.selectByValue(info.getType());
 
-        replaceInputValues(By.id("member_first_name"), info.getFN());
-        replaceInputValues(By.id("member_middle_name"), info.getMN());
-        replaceInputValues(By.id("member_last_name"), info.getLN());
-        replaceInputValues(By.id("member_name_suffix"), info.getSuffix());
-        replaceInputValues(By.id("member_birth_date"), info.getbDate());
+        utils.replaceInputValues(By.id("member_first_name"), info.getFN());
+        utils.replaceInputValues(By.id("member_middle_name"), info.getMN());
+        utils.replaceInputValues(By.id("member_last_name"), info.getLN());
+        utils.replaceInputValues(By.id("member_name_suffix"), info.getSuffix());
+        utils.replaceInputValues(By.id("member_birth_date"), info.getbDate());
+
         //gender
         driver.findElement(By.id("member_gender_" + info.genderValue())).click();
-        replaceInputValues(By.id("member_mailing_address"), info.getAddress());
-        replaceInputValues(By.id("member_zip_code"), info.getZipCode());
-//        replaceInputValues(By.id("member_mobile_number"), info.getMobileNo());
-        System.out.println(info.getMobileNo());
-        WebElement mobile = waitForElement(By.id("member_phic_employer_number"));
-        mobile.clear();
-        mobile.sendKeys(info.getMobileNo());
-
-        replaceInputValues(By.id("member_phic_employer_number"), info.getEmployerNo());
-        replaceInputValues(By.id("member_employer_name"), info.getEmployerName());
+        utils.replaceInputValues(By.id("member_mailing_address"), info.getAddress());
+        utils.replaceInputValues(By.id("member_zip_code"), info.getZipCode());
+        mobileNoFormatting();
+        utils.replaceInputValues(By.id("member_phic_employer_number"), info.getEmployerNo());
+        utils.replaceInputValues(By.id("member_employer_name"), info.getEmployerName());
 
         //submit
         WebElement submit = waitForElement(By.cssSelector("input[name=\"commit\""));
@@ -95,10 +94,13 @@ public class Member {
 
     }
 
-    public void replaceInputValues(By element, String value) {
-        WebElement input = driver.findElement(element);
-        input.clear();
-        input.sendKeys(value);
+    public void mobileNoFormatting(){
+        utils.replaceInputValues(By.id("member_mobile_number"), "");
+        WebElement mobileNo = driver.findElement(By.id("member_mobile_number"));
+        mobileNo.sendKeys(Keys.CONTROL + "a", "");
+        for (char c : info.getMobileNo().toCharArray()){
+            mobileNo.sendKeys(String.valueOf(c));
+        }
     }
 
     public WebElement waitForElement (By element) {
