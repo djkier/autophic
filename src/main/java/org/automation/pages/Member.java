@@ -1,5 +1,6 @@
 package org.automation.pages;
 
+import org.automation.informationcontroller.Controller;
 import org.automation.informationcontroller.MemberInfo;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -16,9 +17,9 @@ public class Member {
     private boolean existing;
     private final Utils utils;
 
-    public Member(WebDriver driver, MemberInfo info, WebDriverWait wait){
+    public Member(WebDriver driver, Controller info, WebDriverWait wait){
         this.driver = driver;
-        this.info = info;
+        this.info = info.getMember();
         this.existing = true;
         this.utils = new Utils(driver, wait);
     }

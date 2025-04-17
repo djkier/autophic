@@ -1,7 +1,9 @@
 package org.automation;
 
 import org.automation.informationcontroller.Controller;
+import org.automation.pages.Claims;
 import org.automation.pages.Member;
+import org.automation.pages.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,11 +32,19 @@ public class Main {
         driver.findElement(By.id("user_password")).sendKeys(Config.get("userPassword"));
         driver.findElement(By.name("commit")).click();
 
+        //delete after testing
+        Utils util = new Utils(driver, wait);
         //Member Automation
-        Member member = new Member(driver, info.getMember(), wait);
-        member.memberAction();
+//        Member member = new Member(driver, info, wait);
+//        member.memberAction();
+
+        //delete after testing
+        WebElement element = util.waitForElement(By.cssSelector("a[href=\"/53/claims\"]"));
+        element.click();
 
         //Patient Automation
+        Claims mother = new Claims(driver, info, wait, true);
+        mother.claimsAction();
 
         //Baby Automation
 

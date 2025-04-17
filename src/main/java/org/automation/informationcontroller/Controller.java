@@ -18,7 +18,7 @@ public class Controller {
     public MemberInfo getMember(){
         member.setGenInfo("000000000012", "Firstest", "Middletest", "Lastest", "", "1990-02-28", "female");
         String address = "169 Sauyo Road, Novaliches, Quezon City";
-        member.setInfo("indigent", address, "1116", "09569123456", "", "");
+        member.setInfo("Indigent", address, "1116", "09569123456", "", "");
 
         return member;
     }
@@ -39,11 +39,17 @@ public class Controller {
     }
 
     public BabyInfo getBaby() {
-        baby.setGenInfo("000000000012","BabyF", "BabyM", "BabyL", "", "2025-04-16", "male");
+        baby.setGenInfo("000000000000","BabyF", "BabyM", "BabyL", "", "2025-04-16", "male");
         baby.setDate(LocalDate.now().minusDays(1), LocalDate.now(), LocalTime.now().minusHours(1), LocalTime.now());
         baby.setBabyInfo(3000, "32682527");
 
         return baby;
+    }
+
+    public boolean isMemberAPatient(){
+        return member.getId().equals(patient.getId()) &&
+                member.getFN().equals(patient.getFN()) &&
+                member.getLN().equals(patient.getLN());
     }
 
 }
