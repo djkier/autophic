@@ -6,13 +6,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 public class Utils {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
-    public Utils(WebDriver driver, WebDriverWait wait) {
+    public Utils(WebDriver driver) {
         this.driver = driver;
-        this.wait = wait;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public void replaceInputValues(By element, String value) {

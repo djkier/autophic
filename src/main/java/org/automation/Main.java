@@ -21,34 +21,33 @@ public class Main {
 
         //create
         WebDriver driver = new EdgeDriver();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
+        Utils utils = new Utils(driver);
         //open website
         driver.manage().window().maximize();
         driver.get(Config.get("website"));
 
         //log-in
-        WebElement userEmail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email")));
+
+        WebElement userEmail = utils.waitForElement(By.id("user_email"));
         userEmail.sendKeys(Config.get("userEmail"));
         driver.findElement(By.id("user_password")).sendKeys(Config.get("userPassword"));
         driver.findElement(By.name("commit")).click();
 
         //delete after testing
-        Utils util = new Utils(driver, wait);
         //Member Automation
-//        Member member = new Member(driver, info, wait);
+//        Member member = new Member(driver, info);
 //        member.memberAction();
 
         //delete after testing
-        WebElement element = util.waitForElement(By.cssSelector("a[href=\"/53/claims\"]"));
+        WebElement element = utils.waitForElement(By.cssSelector("a[href=\"/53/claims\"]"));
         element.click();
 
         //Patient Automation
-        Claims mother = new Claims(driver, info, wait, true);
+        Claims mother = new Claims(driver, info, true);
         mother.claimsAction();
 
         //Baby Automation
-        Claims baby = new Claims(driver, info, wait, false);
+        Claims baby = new Claims(driver, info,false);
 
 
 

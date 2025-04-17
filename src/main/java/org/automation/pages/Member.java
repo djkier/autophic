@@ -17,11 +17,11 @@ public class Member {
     private boolean existing;
     private final Utils utils;
 
-    public Member(WebDriver driver, Controller info, WebDriverWait wait){
+    public Member(WebDriver driver, Controller info){
         this.driver = driver;
         this.info = info.getMember();
         this.existing = true;
-        this.utils = new Utils(driver, wait);
+        this.utils = new Utils(driver);
     }
 
     public void memberAction() throws InterruptedException {
