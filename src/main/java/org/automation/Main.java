@@ -1,18 +1,12 @@
 package org.automation;
 
 import org.automation.informationcontroller.Controller;
-import org.automation.informationcontroller.PatientBabyInterface;
 import org.automation.pages.Claims;
-import org.automation.pages.Member;
-import org.automation.pages.Utils;
+import org.automation.Utility.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {

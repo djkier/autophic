@@ -1,10 +1,12 @@
 package org.automation.pages.claim;
 
+import org.automation.Utility.Calendar;
+import org.automation.Utility.CalendarPath;
 import org.automation.informationcontroller.PatientBabyInterface;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.automation.pages.Utils;
+import org.automation.Utility.Utils;
 
 import java.time.LocalDate;
 
@@ -13,12 +15,14 @@ public class NewClaim {
     private Utils utils;
     private PatientBabyInterface pbInfo;
     private String memberIdNo;
+    private Calendar calendar;
 
     public NewClaim(WebDriver driver, PatientBabyInterface pbInfo, String memberIdNo) {
         this.driver = driver;
         this.utils = new Utils(driver);
         this.pbInfo = pbInfo;
         this.memberIdNo = memberIdNo;
+        this.calendar = new Calendar();
     }
 
     public void createClaim() {
@@ -37,15 +41,17 @@ public class NewClaim {
         driver.findElement(By.id("claim_admission_type_inpatient")).click();
 
         //calendar set Up
-        String admissionTag = "//div[2]/div/div[1]";
-        String dischargeTag = "//div[3]/div";
-        makeCalendarAppear(admissionTag);
-        checkMonthAndYear(admissionTag, pbInfo.getAdmissionDate());
+        CalendarPath admission = calendar.getAdmission();
+        String admissionUICal = calendar.getAdmission().getCalSelector();
+        makeCalendarAppear(admission.getCalSelector());
+
+
+        checkMonthAndYear(admission, pbInfo.getAdmissionDate());
 
     }
 
-    public void checkMonthAndYear(String tag, LocalDate date) {
-        WebElement monthYear = utils.waitForElement(By.xpath(tag + "/div[1]/div[1]/table/thead/tr[1]/th[2]"));
+    public void checkMonthAndYear(CalendarPath tag, LocalDate date) {
+        WebElement monthYear = utils.waitForElement(By.xpath(tag.getMYSelector()));
 
         //Visible Month and Year
         String visibleMonth = extractMonth(monthYear);
@@ -58,22 +64,9 @@ public class NewClaim {
 
 
         while (pbYear != visibleYear) {
-            driver.findElement(By.xpath(tag + "/div[1]/table/thead/tr[1]/th[1]")).click();
+            driver.findElement(By.xpath(tag.getLeftArrow())).click();
             visibleYear = extractYear(monthYear);
         }
-
-//        /html/body/div[2]/div/div[1]/div[1]/table/thead/tr[1]/th[2] addmision
-//        /html/body/div[3]/div/div[1]/div[1]/table/thead/tr[1]/th[2] discharge
-//        /html/body/div[3]/div/div[1]/table/thead/tr[1]/th[2] form2
-//        /html/body/div[77]/div/div[1]/table/thead/tr[1]/th[2]
-//        /html/body/div[78]/div/div[1]/table/thead/tr[1]/th[2]
-//        /html/body/div[3]/div/div[1]/table/thead/tr[1]/th[2]
-//
-//        /html/body/div[2]/div/div[1]/div[2]/table/tbody/tr/td
-//        /html/body/div[3]/div/div[1]/div[2]/table/tbody/tr/td
-//        /html/body/div[3]/div/div[2]/table/tbody/tr/td
-
-
 
     }
 
@@ -88,11 +81,7 @@ public class NewClaim {
     }
 
     public void makeCalendarAppear(String tag){
-        WebElement calendarUIAppear = utils.waitForElement(By.xpath(tag + "/div/span"));
-        //*[@id="new_claim"]/fieldset[2]/div[2]/div/div/span
-        //*[@id="new_claim"]/fieldset[2]/div[3]/div/div/span
-        //*[@id="discharge_diagnoses"]/div/div[2]/table/tbody/tr/td[3]/div/span
-        //*[@id="professionals"]/div/div[1]/div/div[2]/div/div[2]/dl/div/dd/div/span
+        WebElement calendarUIAppear = utils.waitForElement(By.xpath(tag));
         calendarUIAppear.click();
     }
 

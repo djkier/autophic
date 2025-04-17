@@ -1,14 +1,10 @@
 package org.automation.pages;
 
-import org.automation.informationcontroller.BabyInfo;
+import org.automation.Utility.Utils;
 import org.automation.informationcontroller.Controller;
 import org.automation.informationcontroller.PatientBabyInterface;
-import org.automation.informationcontroller.PatientInfo;
 import org.automation.pages.claim.NewClaim;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Claims {
     private WebDriver driver;
