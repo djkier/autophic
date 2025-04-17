@@ -1,6 +1,6 @@
 package org.automation.informationcontroller;
 
-public class MemberInfo extends GeneralInformation{
+public class MemberInfo extends GeneralInformation {
     private String type;
     private String address;
     private String zipCode;

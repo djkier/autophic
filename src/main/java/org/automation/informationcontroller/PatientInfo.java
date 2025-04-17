@@ -3,7 +3,7 @@ package org.automation.informationcontroller;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class PatientInfo extends PatientBabyCommon implements  PatientBabyInterface{
+public class PatientInfo extends PatientBabyCommon {
     private int g;
     private int p;
     private String tpal;
@@ -32,12 +32,14 @@ public class PatientInfo extends PatientBabyCommon implements  PatientBabyInterf
         this.checkUp = cD;
     }
 
+    @Override
     public String addDia() {
         return "Normal Pregnancy " + gp(0) + " " + this.tpal +
                 " Pregnancy Uterine " + weeksAog() +
                 " weeks AOG, Cephalic in Labor";
     }
 
+    @Override
     public String disDia() {
         return gp(1) + "NSD to a live and term baby " +
                 this.babyGender + " in Cephalic Presentation";
@@ -47,7 +49,7 @@ public class PatientInfo extends PatientBabyCommon implements  PatientBabyInterf
         return "G" + this.g + "P" + (this.p + add);
     }
 
-    public String weeksAog(){
+    public String weeksAog() {
         String[] parts = this.puWeeks.split(".");
         return parts[0] + " " + parts[1] + "/7";
     }

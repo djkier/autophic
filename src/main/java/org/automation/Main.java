@@ -1,6 +1,7 @@
 package org.automation;
 
 import org.automation.informationcontroller.Controller;
+import org.automation.informationcontroller.PatientBabyInterface;
 import org.automation.pages.Claims;
 import org.automation.pages.Member;
 import org.automation.pages.Utils;
@@ -47,7 +48,7 @@ public class Main {
         mother.claimsAction();
 
         //Baby Automation
-
+        Claims baby = new Claims(driver, info, wait, false);
 
 
 

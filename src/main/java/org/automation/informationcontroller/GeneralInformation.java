@@ -1,6 +1,6 @@
 package org.automation.informationcontroller;
 
-public class GeneralInformation {
+public abstract class GeneralInformation {
     private String id;
     private String firstName;
     private String middleName;

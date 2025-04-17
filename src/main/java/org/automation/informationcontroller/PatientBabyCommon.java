@@ -3,7 +3,7 @@ package org.automation.informationcontroller;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class PatientBabyCommon extends GeneralInformation{
+public abstract class PatientBabyCommon extends GeneralInformation implements PatientBabyInterface{
     private LocalDate adDay;
     private LocalDate disDay;
     private LocalTime adTime;
@@ -26,6 +26,7 @@ public class PatientBabyCommon extends GeneralInformation{
         this.profFee = 0;
     }
 
+    @Override
     public void setDate(LocalDate ad, LocalDate dis, LocalTime adT, LocalTime disT) {
         this.adDay = ad;
         this.disDay = dis;
@@ -33,44 +34,54 @@ public class PatientBabyCommon extends GeneralInformation{
         this.disTime = disT;
     }
 
+    @Override
     public void setCode(String icd, String rvs) {
         this.icd = icd;
         this.rvs = rvs;
     }
 
+    @Override
     public void setAccreNo(String acc){
         this.accreNo = acc;
     }
 
+    @Override
     public void setPayment(double hci, double prof) {
         this.hciFee = hci;
         this.profFee = prof;
     }
 
+    @Override
     public LocalDate getAdmissionDate() {
         return adDay;
     }
 
+    @Override
     public LocalDate getDischargeDate() {
         return disDay;
     }
 
+    @Override
     public LocalTime getAdmissionTime() {
         return adTime;
     }
 
+    @Override
     public LocalTime getDischargeTime() {
         return disTime;
     }
 
+    @Override
     public String getAccreNo() {
         return accreNo;
     }
 
+    @Override
     public double getHciFee() {
         return hciFee;
     }
 
+    @Override
     public double getProfFee() {
         return profFee;
     }
