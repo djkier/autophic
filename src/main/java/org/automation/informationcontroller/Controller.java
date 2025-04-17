@@ -39,7 +39,7 @@ public class Controller {
     }
 
     public BabyInfo getBaby() {
-        baby.setGenInfo("000000000000","BabyF", "BabyM", "BabyL", "", "2025-04-16", "male");
+        baby.setGenInfo("000000000000","BabyF", "BabyM", "BabyL", "", LocalDate.now().toString(), "male");
         baby.setDate(LocalDate.now().minusDays(1), LocalDate.now(), LocalTime.now().minusHours(1), LocalTime.now());
         baby.setBabyInfo(3000, "32682527");
 

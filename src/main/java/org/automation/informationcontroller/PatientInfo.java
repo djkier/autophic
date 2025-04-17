@@ -3,7 +3,7 @@ package org.automation.informationcontroller;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class PatientInfo extends PatientBabyCommon{
+public class PatientInfo extends PatientBabyCommon implements  PatientBabyInterface{
     private int g;
     private int p;
     private String tpal;

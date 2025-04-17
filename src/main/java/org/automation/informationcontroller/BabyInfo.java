@@ -1,6 +1,6 @@
 package org.automation.informationcontroller;
 
-public class BabyInfo extends PatientBabyCommon{
+public class BabyInfo extends PatientBabyCommon implements PatientBabyInterface{
     private int weight;
     private String nbs;
 
@@ -16,7 +16,7 @@ public class BabyInfo extends PatientBabyCommon{
         this.nbs = nbs;
     }
 
-    public String addDia(){
+    public String addDia() {
         return "Term and live baby " + super.getGender() +
                 " in Cephalic Presentation Body Weight - " +
                 this.weight + " grams A/S - 9,10";
