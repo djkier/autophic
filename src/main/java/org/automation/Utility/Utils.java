@@ -27,6 +27,10 @@ public class Utils {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
 
+    public WebElement waitForElement (WebElement element) {
+        return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
 
 
 

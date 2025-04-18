@@ -34,6 +34,9 @@ public class Member {
             existing = false;
             createNewMember();
         }
+
+        WebElement mainPage = utils.waitForElement(By.cssSelector("a[href=\"/53/claims\""));
+        mainPage.click();
     }
 
     public boolean checkMember() throws InterruptedException {
@@ -87,8 +90,7 @@ public class Member {
         WebElement submit = utils.waitForElement(By.cssSelector("input[name=\"commit\""));
         submit.click();
 
-        WebElement mainPage = utils.waitForElement(By.cssSelector("a[href=\"/53/claims\""));
-        mainPage.click();
+
 
     }
 

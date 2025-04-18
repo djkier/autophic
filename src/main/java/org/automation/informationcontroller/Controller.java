@@ -25,8 +25,12 @@ public class Controller {
 
     public PatientInfo getPatient() {
         ArrayList<LocalDate> checkup = new ArrayList<>();
+        LocalDate adDay = LocalDate.of(2025, 3, 12);
+        LocalDate disDay = LocalDate.of(2025,3,13);
+        LocalTime adTime = LocalTime.of(7,54);
+        LocalTime disTime = LocalTime.of(13, 24);
         patient.setGenInfo("000000000012","PatientF", "PatientMiddletest", "PatientLastest", "", "1990-02-28", "female");
-        patient.setDate(LocalDate.now().minusDays(1), LocalDate.now(), LocalTime.now().minusHours(2), LocalTime.now());
+        patient.setDate(adDay, disDay, adTime, disTime);
 
         checkup.add(LocalDate.of(2024,4,21));
         checkup.add(LocalDate.of(2024,5,27));
@@ -39,8 +43,12 @@ public class Controller {
     }
 
     public BabyInfo getBaby() {
+        LocalDate adDay = LocalDate.of(2025, 3, 12);
+        LocalDate disDay = LocalDate.of(2025,3,13);
+        LocalTime adTime = LocalTime.of(13,18);
+        LocalTime disTime = LocalTime.of(13, 24);
         baby.setGenInfo("000000000000","BabyF", "BabyM", "BabyL", "", LocalDate.now().toString(), "male");
-        baby.setDate(LocalDate.now().minusDays(1), LocalDate.now(), LocalTime.now().minusHours(1), LocalTime.now());
+        baby.setDate(adDay, disDay, adTime, disTime);
         baby.setBabyInfo(3000, "32682527");
 
         return baby;

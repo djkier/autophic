@@ -11,13 +11,12 @@ public class CalendarPath {
         this.pickDay = pickDay;
     }
 
-    public String getCalSelector() {
-        return this.calSelector + "/div/span";
+    private String getHeaderSelector() {
+        return this.mySelector + "/div[1]/table/thead/tr[1]";
     }
 
-    public String getHeaderSelector() {
-        return this.mySelector + "/div[1]/table/thead/tr[1]";
-
+    public String getCalSelector() {
+        return this.calSelector + "/div/span";
     }
 
     public String getMYSelector() {

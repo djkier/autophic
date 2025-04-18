@@ -9,15 +9,15 @@ public class Calendar {
         this.discharge = setDischarge();
     }
 
-    public CalendarPath setAdmission() {
+    private CalendarPath setAdmission() {
         return createCalendar(2);
     }
 
-    public CalendarPath setDischarge() {
+    private CalendarPath setDischarge() {
         return createCalendar(3);
     }
 
-    public CalendarPath createCalendar(int no){
+    private CalendarPath createCalendar(int no){
         String calSelector = "//div[" + no + "]/div";
         String mySelector = "//div[" + no + "]/div/div[1]";
         String pickDay = "//div[" + no + "]/div/div[1]";
@@ -31,6 +31,9 @@ public class Calendar {
     public CalendarPath getDischarge() {
         return discharge;
     }
+
+
+
 
 
 }

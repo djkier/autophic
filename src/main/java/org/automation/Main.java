@@ -3,6 +3,7 @@ package org.automation;
 import org.automation.informationcontroller.Controller;
 import org.automation.pages.Claims;
 import org.automation.Utility.Utils;
+import org.automation.pages.Member;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,7 +28,7 @@ public class Main {
         driver.findElement(By.id("user_password")).sendKeys(Config.get("userPassword"));
         driver.findElement(By.name("commit")).click();
 
-        //delete after testing
+
         //Member Automation
 //        Member member = new Member(driver, info);
 //        member.memberAction();

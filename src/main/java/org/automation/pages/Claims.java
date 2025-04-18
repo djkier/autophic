@@ -29,10 +29,14 @@ public class Claims {
         }
     }
 
-    public void claimsAction(){
+    public void claimsAction() {
 
-        NewClaim newClaim = new NewClaim(this.driver, this.pbInfo, this.info.getMember().getId());
-        newClaim.createClaim();
+//        NewClaim newClaim = new NewClaim(this.driver, this.pbInfo, this.info.getMember().getId());
+//        newClaim.createClaim();
+
+
+
+
 
 
     }
