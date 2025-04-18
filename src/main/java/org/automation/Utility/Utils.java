@@ -31,6 +31,15 @@ public class Utils {
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
+    public void clicker(By element) {
+        driver.findElement(element).click();
+    }
+
+    public void clickerWait(By element) {
+        WebElement elem = waitForElement(element);
+        elem.click();
+    }
+
 
 
 

@@ -33,10 +33,6 @@ public abstract class GeneralInformation {
         return this.id;
     }
 
-    public void setId(String str){
-        this.id = str;
-    }
-
     public String getFN(){
         return this.firstName;
     }

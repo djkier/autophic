@@ -52,11 +52,11 @@ public class Main {
 
 
         //Patient Automation
-        Claims mother = new Claims(driver, info, true);
+        Claims mother = new Claims(driver, info);
         mother.claimsAction();
 
         //Baby Automation
-        Claims baby = new Claims(driver, info,false);
+        Claims baby = new Claims(driver, info);
 
 
 

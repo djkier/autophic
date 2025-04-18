@@ -30,5 +30,25 @@ public interface PatientBabyInterface {
 
     public double getProfFee();
 
+    public String getId();
+
+    public String getFN();
+
+    public String getMN();
+
+    public String getLN();
+
+    public String getSuffix();
+
+    public String getbDate();
+
+    public String getGender();
+
+    public int genderValue();
+
+    public String getRelationShipToMember();
+
+    public void setRelationShipToMember(String relationship);
+
 }
 

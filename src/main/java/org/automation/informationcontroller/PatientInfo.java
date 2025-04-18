@@ -30,6 +30,7 @@ public class PatientInfo extends PatientBabyCommon {
         this.puWeeks = puW;
         this.babyGender = gender;
         this.checkUp = cD;
+        super.setRelationShipToMember("Spouse");
     }
 
     @Override
@@ -44,6 +45,8 @@ public class PatientInfo extends PatientBabyCommon {
         return gp(1) + "NSD to a live and term baby " +
                 this.babyGender + " in Cephalic Presentation";
     }
+
+
 
     public String gp(int add) {
         return "G" + this.g + "P" + (this.p + add);

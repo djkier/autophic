@@ -29,7 +29,8 @@ public class Controller {
         LocalDate disDay = LocalDate.of(2025,3,13);
         LocalTime adTime = LocalTime.of(7,54);
         LocalTime disTime = LocalTime.of(13, 24);
-        patient.setGenInfo("000000000012","PatientF", "PatientMiddletest", "PatientLastest", "", "1990-02-28", "female");
+        patient.setGenInfo("000000000012", "Firstest", "Middletest", "Lastest", "", "1990-02-28", "female");
+//        patient.setGenInfo("000000000012","PatientF", "PatientMiddletest", "PatientLastest", "", "1990-02-28", "female");
         patient.setDate(adDay, disDay, adTime, disTime);
 
         checkup.add(LocalDate.of(2024,4,21));
