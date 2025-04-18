@@ -14,6 +14,8 @@ public abstract class PatientBabyCommon extends GeneralInformation implements Pa
     private double hciFee;
     private double profFee;
     private String patientType;
+    private String addmisionDiagnosis;
+    private String dischargeDiagnosis;
 
     public PatientBabyCommon() {
         this.adDay = LocalDate.now().minusDays(1);
@@ -26,6 +28,8 @@ public abstract class PatientBabyCommon extends GeneralInformation implements Pa
         this.hciFee = 0;
         this.profFee = 0;
         this.patientType = "";
+        this.addmisionDiagnosis = "";
+        this.dischargeDiagnosis = "";
     }
 
     @Override
@@ -51,6 +55,14 @@ public abstract class PatientBabyCommon extends GeneralInformation implements Pa
     public void setPayment(double hci, double prof) {
         this.hciFee = hci;
         this.profFee = prof;
+    }
+
+    public void setAdmissionDiagnosis(String add) {
+        this.addmisionDiagnosis = add;
+    }
+
+    public void setDischargeDiagnosis(String dis) {
+        this.dischargeDiagnosis = dis;
     }
 
 
@@ -97,5 +109,16 @@ public abstract class PatientBabyCommon extends GeneralInformation implements Pa
     public void setPatientType(String patientType) {
         this.patientType = patientType;
     }
+
+    @Override
+    public String getIcd () {
+        return this.icd;
+    }
+
+    @Override
+    public String getRvs() {
+        return this.rvs;
+    }
+
 
 }

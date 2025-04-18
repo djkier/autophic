@@ -10,6 +10,8 @@ public class BabyInfo extends PatientBabyCommon {
         super.setCode("Z38.0", "99460");
         super.setPayment(4141.5, 978);
         super.setPatientType("Child");
+        super.setAdmissionDiagnosis(addDia());
+        super.setDischargeDiagnosis(disDia());
     }
 
     public void setBabyInfo(int weight, String nbs) {

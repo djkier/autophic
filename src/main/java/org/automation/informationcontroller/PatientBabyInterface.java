@@ -50,5 +50,8 @@ public interface PatientBabyInterface {
 
     public void setPatientType(String relationship);
 
+    public String getIcd ();
+
+    public String getRvs();
 }
 

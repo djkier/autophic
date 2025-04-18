@@ -20,7 +20,7 @@ public class PatientInfo extends PatientBabyCommon {
         this.checkUp = new ArrayList<>();
         super.setCode("O80.0, Z37.0", "MCP01");
         super.setPayment(9360, 6240);
-
+        super.setPatientType("Mother");
     }
 
     public void setPatientInfo(int gr, int par, String tpal, String puW, String gender, ArrayList<LocalDate> cD) {
@@ -30,13 +30,12 @@ public class PatientInfo extends PatientBabyCommon {
         this.puWeeks = puW;
         this.babyGender = gender;
         this.checkUp = cD;
-        super.setPatientType("Mother");
     }
 
     @Override
     public String addDia() {
-        return "Normal Pregnancy " + gp(0) + " " + this.tpal +
-                " Pregnancy Uterine " + weeksAog() +
+        return "Normal Pregnancy " + gp(0) + " (" + this.tpal +
+                ") Pregnancy Uterine " + weeksAog() +
                 " weeks AOG, Cephalic in Labor";
     }
 
@@ -53,8 +52,10 @@ public class PatientInfo extends PatientBabyCommon {
     }
 
     public String weeksAog() {
-        String[] parts = this.puWeeks.split(".");
-        return parts[0] + " " + parts[1] + "/7";
+        double weeksAndFrac = Double.parseDouble(this.puWeeks);
+        int weeks = (int) weeksAndFrac;
+        double frac = (weeksAndFrac - weeks) * 10;
+        return weeks + " " + (int) frac + "/7";
     }
 
     public ArrayList<LocalDate> getCheckUpDates() {

@@ -17,10 +17,14 @@ public class Utils {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
+    public void replaceInputValues(WebElement element, String value) {
+        element.clear();
+        element.sendKeys(value);
+    }
+
     public void replaceInputValues(By element, String value) {
         WebElement input = driver.findElement(element);
-        input.clear();
-        input.sendKeys(value);
+        replaceInputValues(input, value);
     }
 
     public WebElement waitForElement (By element) {

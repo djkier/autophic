@@ -31,7 +31,7 @@ public class Claims {
         }
     }
 
-    public void claimsAction() {
+    public void claimsAction() throws InterruptedException {
 
         //delete after testing
         //Click testing claim
@@ -53,7 +53,7 @@ public class Claims {
         utils.clickerWait(By.xpath("//*[@id=\"claimTabs\"]/li[4]/a"));
         utils.clickerWait(By.xpath("//*[@id=\"form-two\"]/div[1]/div/a"));
 
-        CF2Information cf2Info = new CF2Information();
+        CF2Information cf2Info = new CF2Information(driver, pbInfo);
         cf2Info.action();
 
 
