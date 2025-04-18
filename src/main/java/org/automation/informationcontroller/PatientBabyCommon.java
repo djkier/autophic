@@ -13,7 +13,7 @@ public abstract class PatientBabyCommon extends GeneralInformation implements Pa
     private String accreNo;
     private double hciFee;
     private double profFee;
-    private String relationship;
+    private String patientType;
 
     public PatientBabyCommon() {
         this.adDay = LocalDate.now().minusDays(1);
@@ -25,7 +25,7 @@ public abstract class PatientBabyCommon extends GeneralInformation implements Pa
         this.accreNo = "";
         this.hciFee = 0;
         this.profFee = 0;
-        this.relationship = "";
+        this.patientType = "";
     }
 
     @Override
@@ -91,11 +91,11 @@ public abstract class PatientBabyCommon extends GeneralInformation implements Pa
     }
 
     @Override
-    public String getRelationShipToMember() { return relationship; }
+    public String getPatientType() { return patientType; }
 
     @Override
-    public void setRelationShipToMember(String relationship) {
-        this.relationship = relationship;
+    public void setPatientType(String patientType) {
+        this.patientType = patientType;
     }
 
 }

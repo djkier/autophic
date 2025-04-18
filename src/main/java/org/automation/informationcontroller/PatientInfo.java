@@ -30,7 +30,7 @@ public class PatientInfo extends PatientBabyCommon {
         this.puWeeks = puW;
         this.babyGender = gender;
         this.checkUp = cD;
-        super.setRelationShipToMember("Spouse");
+        super.setPatientType("Mother");
     }
 
     @Override

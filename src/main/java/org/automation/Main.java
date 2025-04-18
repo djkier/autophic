@@ -28,28 +28,13 @@ public class Main {
         driver.findElement(By.id("user_password")).sendKeys(Config.get("userPassword"));
         driver.findElement(By.name("commit")).click();
 
-
         //Member Automation
 //        Member member = new Member(driver, info);
 //        member.memberAction();
 
         //delete after testing
         //Go back to the main page
-        WebElement element = utils.waitForElement(By.cssSelector("a[href=\"/53/claims\"]"));
-        element.click();
-
-        //delete after testing
-        //Click testing claim
-        WebElement testClaim = utils.waitForElement(By.xpath("/html/body/main/div/table/tbody/tr[1]/td[1]/a"));
-        testClaim.click();
-
-        //delete after testing
-        //Claim Form 1 page
-        WebElement testCF1 = utils.waitForElement(By.xpath("//*[@id=\"claimTabs\"]/li[3]/a"));
-        testCF1.click();
-        WebElement editTestCf1 = utils.waitForElement(By.xpath("//*[@id=\"form-one\"]/div[1]/div/a"));
-        editTestCf1.click();
-
+        utils.clickerWait(By.cssSelector("a[href=\"/53/claims\"]"));
 
         //Patient Automation
         Claims mother = new Claims(driver, info);

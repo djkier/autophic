@@ -4,8 +4,11 @@ import org.automation.Utility.Utils;
 import org.automation.informationcontroller.Controller;
 import org.automation.informationcontroller.PatientBabyInterface;
 import org.automation.pages.claim.CF1;
+import org.automation.pages.claim.CF2Information;
 import org.automation.pages.claim.NewClaim;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class Claims {
     private WebDriver driver;
@@ -30,14 +33,28 @@ public class Claims {
 
     public void claimsAction() {
 
+        //delete after testing
+        //Click testing claim
+        utils.clickerWait(By.xpath("/html/body/main/div/table/tbody/tr[1]/td[1]/a"));
+
 //        NewClaim newClaim = new NewClaim(this.driver, this.pbInfo, this.info.getMember().getId());
 //        newClaim.createClaim();
 
-        CF1 cf1 = new CF1(driver, pbInfo);
-        cf1.action();
+        //delete after testing
+        //Claim Form 1 page
+        utils.clickerWait(By.xpath("//*[@id=\"claimTabs\"]/li[3]/a"));
+//        utils.clickerWait(By.xpath("//*[@id=\"form-one\"]/div[1]/div/a"));
 
+//        CF1 cf1 = new CF1(driver, pbInfo);
+//        cf1.action();
 
+        //delete after testing
+        //Claim Form 2 page
+        utils.clickerWait(By.xpath("//*[@id=\"claimTabs\"]/li[4]/a"));
+        utils.clickerWait(By.xpath("//*[@id=\"form-two\"]/div[1]/div/a"));
 
+        CF2Information cf2Info = new CF2Information();
+        cf2Info.action();
 
 
     }

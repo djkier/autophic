@@ -46,9 +46,9 @@ public interface PatientBabyInterface {
 
     public int genderValue();
 
-    public String getRelationShipToMember();
+    public String getPatientType();
 
-    public void setRelationShipToMember(String relationship);
+    public void setPatientType(String relationship);
 
 }
 

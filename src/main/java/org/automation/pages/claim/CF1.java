@@ -53,7 +53,7 @@ public class CF1 {
         }
 
         //Pick relationship to member
-        if (pbInfo.getRelationShipToMember().equalsIgnoreCase("child")) {
+        if (pbInfo.getPatientType().equalsIgnoreCase("child")) {
             util.clicker(By.id("form_one_patient_relationship_child"));
         } else {
             util.clicker(By.id("form_one_patient_relationship_spouse"));

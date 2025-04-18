@@ -9,7 +9,7 @@ public class BabyInfo extends PatientBabyCommon {
         this.nbs = "";
         super.setCode("Z38.0", "99460");
         super.setPayment(4141.5, 978);
-        super.setRelationShipToMember("Child");
+        super.setPatientType("Child");
     }
 
     public void setBabyInfo(int weight, String nbs) {
