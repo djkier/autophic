@@ -48,7 +48,8 @@ public class CF2Information {
         utils.clicker(By.cssSelector("#discharge_diagnoses div div.panel-body table tfoot tr td a"));
         //RVS date first so the unchanged value of rvs could use
         String pathToRelativeRVS = "//*[@id='discharge_diagnoses']//span[normalize-space(text())='RVS Code or description']/ancestor::tr/td[3]/div/input";
-        utils.replaceInputValues(By.xpath(pathToRelativeRVS), pbInfo.getDischargeDate().toString());
+        WebElement dateRVS = utils.waitForElement(By.xpath(pathToRelativeRVS));
+        utils.replaceInputValues(dateRVS, pbInfo.getDischargeDate().toString());
         //RVS code
         utils.clickerWait(By.xpath("//*[@id='discharge_diagnoses']//span[normalize-space(text())='RVS Code or description']"));
         WebElement rvsCode = utils.waitForElement(By.xpath("//*[@id=\"select2-drop\"]/div/input"));
@@ -61,5 +62,18 @@ public class CF2Information {
         if (pbInfo instanceof BabyInfo) {
             System.out.println("Baby");
         }
+
+        //submit
+    }
+
+    public void motherCF2(PatientBabyInterface pbInfo) {
+        PatientInfo mother = (PatientInfo) pbInfo;
+//*[@id="form_two_did_maternal_care_package_dates_"]
+//*[@id="form_two_did_maternal_care_package_dates_"]
+    }
+
+    public void babyCF2(PatientBabyInterface pbInfo) {
+        BabyInfo mother = (BabyInfo) pbInfo;
+
     }
 }

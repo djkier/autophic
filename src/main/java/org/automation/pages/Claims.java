@@ -3,6 +3,7 @@ package org.automation.pages;
 import org.automation.Utility.Utils;
 import org.automation.informationcontroller.Controller;
 import org.automation.informationcontroller.PatientBabyInterface;
+import org.automation.informationcontroller.PatientInfo;
 import org.automation.pages.claim.CF1;
 import org.automation.pages.claim.CF2Information;
 import org.automation.pages.claim.NewClaim;
@@ -16,15 +17,15 @@ public class Claims {
     private PatientBabyInterface pbInfo;
     private Utils utils;
 
-    public Claims(WebDriver driver, Controller info) {
+    public Claims(WebDriver driver, Controller info, boolean mother) {
         this.driver = driver;
         this.info = info;
-        this.pbInfo = pbInfoSelector(info);
+        this.pbInfo = pbInfoSelector(info, mother);
         this.utils = new Utils(driver);
     }
 
-    public PatientBabyInterface pbInfoSelector(Controller pbi){
-        if (pbi.isMemberAPatient()) {
+    public PatientBabyInterface pbInfoSelector(Controller pbi, boolean mother){
+        if (mother) {
             return pbi.getPatient();
         } else {
             return pbi.getBaby();

@@ -37,11 +37,11 @@ public class Main {
         utils.clickerWait(By.cssSelector("a[href=\"/53/claims\"]"));
 
         //Patient Automation
-        Claims mother = new Claims(driver, info);
+        Claims mother = new Claims(driver, info, true);
         mother.claimsAction();
 
         //Baby Automation
-        Claims baby = new Claims(driver, info);
+        Claims baby = new Claims(driver, info, false);
 
 
 
