@@ -34,8 +34,22 @@ public class Main {
 //        member.memberAction();
 
         //delete after testing
+        //Go back to the main page
         WebElement element = utils.waitForElement(By.cssSelector("a[href=\"/53/claims\"]"));
         element.click();
+
+        //delete after testing
+        //Click testing claim
+        WebElement testClaim = utils.waitForElement(By.xpath("/html/body/main/div/table/tbody/tr[1]/td[1]/a"));
+        testClaim.click();
+
+        //delete after testing
+        //Claim Form 1 page
+        WebElement testCF1 = utils.waitForElement(By.xpath("//*[@id=\"claimTabs\"]/li[3]/a"));
+        testCF1.click();
+        WebElement editTestCf1 = utils.waitForElement(By.xpath("//*[@id=\"form-one\"]/div[1]/div/a"));
+        editTestCf1.click();
+
 
         //Patient Automation
         Claims mother = new Claims(driver, info, true);
