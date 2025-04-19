@@ -33,7 +33,6 @@ public class CF2Information {
         utils.clickerWait(By.id("form_two_accommodation_type_private"));
         //Input admission diagnosis
         WebElement admissionDiagnosis = utils.waitForElement(By.id("form_two_admission_diagnosis"));
-//        System.out.println(pbInfo.addDia());
         utils.replaceInputValues(admissionDiagnosis, pbInfo.addDia());
 
         //Open discharge diagnoses
@@ -82,7 +81,7 @@ public class CF2Information {
     }
 
     public void babyCF2(PatientBabyInterface pbInfo) {
-//        BabyInfo baby = (BabyInfo) pbInfo;
+        BabyInfo baby = (BabyInfo) pbInfo;
         utils.clicker(By.id("form_two_did_ncp"));
         utils.clickerWait(By.id("form_two_did_ncp_essential_newborn_care"));
 //        Newborn hearing screening test
@@ -97,6 +96,6 @@ public class CF2Information {
         utils.clicker(By.id("form_two_did_ncp_essential_bcg"));
         utils.clicker(By.id("form_two_did_ncp_essential_non_separation"));
         utils.clicker(By.id("form_two_did_ncp_essential_hepatitis_b"));
-        utils.replaceInputValues(By.id("form_two_did_ncp_newborn_screening_test_filter_card_number"), "12345678");
+        utils.replaceInputValues(By.id("form_two_did_ncp_newborn_screening_test_filter_card_number"), baby.getNbs());
     }
 }
