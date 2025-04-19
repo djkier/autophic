@@ -51,7 +51,7 @@ public class CF2Information {
         //RVS date first so the unchanged value of rvs could use
         String pathToRelativeRVS = "//*[@id='discharge_diagnoses']//span[normalize-space(text())='RVS Code or description']/ancestor::tr/td[3]/div/input";
         WebElement dateRVS = utils.waitForElement(By.xpath(pathToRelativeRVS));
-        utils.replaceInputValues(dateRVS, pbInfo.getDischargeDate().toString());
+        utils.replaceInputValues(dateRVS, pbInfo.getAdmissionDate().toString());
         //RVS code
         utils.clickerWait(By.xpath("//*[@id='discharge_diagnoses']//span[normalize-space(text())='RVS Code or description']"));
         WebElement rvsCode = utils.waitForElement(By.xpath("//*[@id=\"select2-drop\"]/div/input"));

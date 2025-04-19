@@ -52,7 +52,7 @@ public class NewClaim {
         chooseDateAndTime(discharge, disTime, pbInfo.getDischargeDate(), pbInfo.getDischargeTime());
 
         //submit
-        driver.findElement(By.xpath("//*[@id=\"new_claim\"]/div/div/input")).click();
+        utils.clicker(By.cssSelector("input[name=\"commit\"]"));
 
 
     }

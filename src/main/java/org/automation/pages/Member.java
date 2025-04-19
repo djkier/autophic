@@ -24,7 +24,7 @@ public class Member {
         this.utils = new Utils(driver);
     }
 
-    public void memberAction() throws InterruptedException {
+    public void action() throws InterruptedException {
         WebElement memberTab = utils.waitForElement(By.cssSelector("a[href=\"/53/members\""));
         memberTab.click();
 

@@ -28,20 +28,22 @@ public class Main {
         driver.findElement(By.id("user_password")).sendKeys(Config.get("userPassword"));
         driver.findElement(By.name("commit")).click();
 
-        //Member Automation
-//        Member member = new Member(driver, info);
-//        member.memberAction();
+//        Member Automation
+        Member member = new Member(driver, info);
+        member.action();
 
         //delete after testing
         //Go back to the main page
         utils.clickerWait(By.cssSelector("a[href=\"/53/claims\"]"));
 
+
         //Patient Automation
         Claims mother = new Claims(driver, info, true);
-        mother.claimsAction();
+        mother.action();
 
         //Baby Automation
         Claims baby = new Claims(driver, info, false);
+        baby.action();
 
 
 

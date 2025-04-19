@@ -1,5 +1,7 @@
 package org.automation.informationcontroller;
 
+import org.automation.Config;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -8,11 +10,14 @@ public class Controller {
     private final MemberInfo member;
     private final PatientInfo patient;
     private final BabyInfo baby;
+    private final String accreNo;
 
     public Controller() {
         this.member = new MemberInfo();
         this.patient = new PatientInfo();
         this.baby = new BabyInfo();
+        //delete this
+        this.accreNo = Config.get("accreNo");
     }
 
     public MemberInfo getMember(){
@@ -38,7 +43,7 @@ public class Controller {
         checkup.add(LocalDate.of(2024,6,28));
         checkup.add(LocalDate.of(2025,1,31));
         patient.setPatientInfo(1, 0, "1001", "36.5", "male", checkup);
-        patient.setAccreNo("accreNo");
+        patient.setAccreNo(accreNo);
 
         return patient;
     }
@@ -51,6 +56,7 @@ public class Controller {
         baby.setGenInfo("000000000000","BabyF", "BabyM", "BabyL", "", LocalDate.now().toString(), "male");
         baby.setDate(adDay, disDay, adTime, disTime);
         baby.setBabyInfo(3000, "32682527");
+        baby.setAccreNo(accreNo);
 
         return baby;
     }

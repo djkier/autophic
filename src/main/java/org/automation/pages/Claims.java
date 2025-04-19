@@ -5,6 +5,7 @@ import org.automation.informationcontroller.Controller;
 import org.automation.informationcontroller.PatientBabyInterface;
 import org.automation.informationcontroller.PatientInfo;
 import org.automation.pages.claim.CF1;
+import org.automation.pages.claim.CF2Benefits;
 import org.automation.pages.claim.CF2Information;
 import org.automation.pages.claim.NewClaim;
 import org.openqa.selenium.By;
@@ -32,32 +33,43 @@ public class Claims {
         }
     }
 
-    public void claimsAction() throws InterruptedException {
+    public void action() throws InterruptedException {
 
         //delete after testing
         //Click testing claim
-        utils.clickerWait(By.xpath("/html/body/main/div/table/tbody/tr[1]/td[1]/a"));
+//        utils.clickerWait(By.cssSelector("a[href=\"/53/claims\"]"));
 
-//        NewClaim newClaim = new NewClaim(this.driver, this.pbInfo, this.info.getMember().getId());
-//        newClaim.createClaim();
+        NewClaim newClaim = new NewClaim(this.driver, this.pbInfo, this.info.getMember().getId());
+        newClaim.createClaim();
 
         //delete after testing
         //Claim Form 1 page
-        utils.clickerWait(By.xpath("//*[@id=\"claimTabs\"]/li[3]/a"));
+//        utils.clickerWait(By.xpath("//*[@id=\"claimTabs\"]/li[3]/a"));
 //        utils.clickerWait(By.xpath("//*[@id=\"form-one\"]/div[1]/div/a"));
 
-//        CF1 cf1 = new CF1(driver, pbInfo);
-//        cf1.action();
+        CF1 cf1 = new CF1(driver, pbInfo);
+        cf1.action();
 
         //delete after testing
         //Claim Form 2 page
         utils.clickerWait(By.xpath("//*[@id=\"claimTabs\"]/li[4]/a"));
-        utils.clickerWait(By.xpath("//*[@id=\"form-two\"]/div[1]/div/a"));
+        Thread.sleep(500);
+        utils.clickerWait(By.xpath("//*[@id=\"form-two\"]//a[normalize-space(text())='Edit CF2']"));
 
         CF2Information cf2Info = new CF2Information(driver, pbInfo);
         cf2Info.action();
 
+        //delete after testing
+        //Claim Form 2 Benefits page
 
+        utils.clickerWait(By.xpath("//*[@id=\"claimTabs\"]/li[5]/a"));
+        Thread.sleep(500);
+        utils.clickerWait(By.xpath("//*[@id=\"form-two\"]//a[normalize-space(text())='Edit CF2 Benefits']"));
+
+        CF2Benefits cf2Benefits = new CF2Benefits(driver, pbInfo);
+        cf2Benefits.action();
+
+        utils.clickerWait(By.cssSelector("a[href=\"/53/claims\"]"));
     }
 
 }
