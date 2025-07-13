@@ -4,7 +4,6 @@ import org.automation.Utility.DriverManager;
 import org.automation.Utility.Utility;
 import org.automation.informationcontroller.Controller;
 import org.automation.pages.Claims;
-import org.automation.Utility.Utils;
 import org.automation.pages.Member;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,6 +17,8 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 
+
+        //Create a new class for the information
         Controller info = new Controller();
 
         String address = "Street Name, Brgy. Name, Name City, Country Name";
@@ -48,7 +49,7 @@ public class Main {
         info.setPatientInfo(
                 LocalDate.of(2025, 5, 22),
                 LocalDate.of(2025, 5, 23),
-                LocalTime.of(5, 51),
+                LocalTime.of(5, 1),
                 LocalTime.of(9,1),
                 "000000000010",
                 "Test First",
@@ -90,8 +91,6 @@ public class Main {
         driver.manage().window().maximize();
         driver.get(Config.get("website"));
 
-        //delete this utils after refactoring
-        Utils utils = new Utils(driver);
 
         //log-in
         WebElement userEmail = Utility.waitForElement(By.id("user_email"));
@@ -102,20 +101,19 @@ public class Main {
         userPassword.sendKeys(Config.get("userPassword"));
         submit.click();
 
-//        Member Automation
+        //Member Automation
         Member member = new Member(info.getMember());
         member.action();
 
         //Patient Automation
-        Claims mother = new Claims(driver, info, info.getPatient());
+        Claims mother = new Claims(info.getPatient(), info.getMember().getId());
         mother.action();
 
-//        //Baby Automation
-//        Claims baby = new Claims(driver, info, false);
-//        baby.action();
+        //Baby Automation
+        Claims baby = new Claims(info.getBaby(), info.getMember().getId());
+        baby.action();
 //
 //
-        System.out.println("Close Browser");
         driver.quit();
     }
 }
