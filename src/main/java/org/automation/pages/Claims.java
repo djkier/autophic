@@ -31,7 +31,7 @@ public class Claims {
         //Click testing claim
         Utility.waitAndClickElement(By.cssSelector("a[href=\"/53/claims\"]"));
 
-        NewClaim newClaim = new NewClaim(this.driver, this.pbInfo, this.memberNumber);
+        NewClaim newClaim = new NewClaim(this.pbInfo, this.memberNumber);
         newClaim.createClaim();
 
         //delete after testing

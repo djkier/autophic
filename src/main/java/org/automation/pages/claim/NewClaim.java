@@ -13,14 +13,10 @@ import java.time.LocalTime;
 import java.util.List;
 
 public class NewClaim {
-    private WebDriver driver;
-    private Utils utils;
     private PatientBabyInterface pbInfo;
     private String memberIdNo;
 
-    public NewClaim(WebDriver driver, PatientBabyInterface pbInfo, String memberIdNo) {
-        this.driver = driver;
-        this.utils = new Utils(driver);
+    public NewClaim(PatientBabyInterface pbInfo, String memberIdNo) {
         this.pbInfo = pbInfo;
         this.memberIdNo = memberIdNo;
     }
