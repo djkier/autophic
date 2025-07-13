@@ -18,20 +18,13 @@ public class Claims {
     private PatientBabyInterface pbInfo;
     private Utils utils;
 
-    public Claims(WebDriver driver, Controller info, boolean mother) {
+    public Claims(WebDriver driver, Controller info, PatientBabyInterface infoSpecific) {
         this.driver = driver;
         this.info = info;
-        this.pbInfo = pbInfoSelector(info, mother);
+        this.pbInfo = infoSpecific;
         this.utils = new Utils(driver);
     }
 
-    public PatientBabyInterface pbInfoSelector(Controller pbi, boolean mother){
-        if (mother) {
-            return pbi.getPatient();
-        } else {
-            return pbi.getBaby();
-        }
-    }
 
     public void action() throws InterruptedException {
 
