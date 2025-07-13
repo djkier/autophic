@@ -23,7 +23,7 @@ public class Controller {
     }
 
     public MemberInfo getMember(){
-        member.setGenInfo("000000000001", "Test First", "Test Second", "Test Last", "", "1995-09-01", "female");
+        member.setGenInfo("000000000007", "Test First", "Test Second", "Test Last", "", "1995-09-01", "female");
         String address = "Street Name, Brgy. Name, Name City, Country Name";
         member.setInfo("Individually Paying", address, "1116", "09565645645", "", "");
 

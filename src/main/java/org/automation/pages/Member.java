@@ -10,8 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.List;
-
 public class Member {
     private final WebDriver driver;
     private final MemberInfo info;
@@ -25,23 +23,25 @@ public class Member {
         this.utils = new Utils(driver);
     }
 
-    public void action() throws InterruptedException {
-
-        WebElement memberTab = Utility.waitForElement(By.cssSelector("a[href=\"/53/members\""));
+    public void action() {
+        By mainPagePath = By.cssSelector("a[href=\"/53/members\"");
+        WebElement memberTab = Utility.waitForElement(mainPagePath);
         memberTab.click();
 
-        if (checkMember()) {
+        if (!checkMember()) {
             memberExist();
         } else {
             existing = false;
             createNewMember();
         }
 
-        WebElement mainPage = utils.waitForElement(By.cssSelector("a[href=\"/53/claims\""));
-        mainPage.click();
+
+//
+//        WebElement mainPage = utils.waitForElement(By.cssSelector("a[href=\"/53/claims\""));
+//        mainPage.click();
     }
 
-    public boolean checkMember() throws InterruptedException {
+    public boolean checkMember(){
         //Select input box for philhealth number
         WebElement inputIdNo = Utility.waitForElement(By.id("q_phic_id_number_start"));
         inputIdNo.sendKeys(info.getId());
@@ -53,29 +53,21 @@ public class Member {
         //Click Apply filter
         Utility.waitAndClickElement(By.cssSelector("#member_search > button"));
 
-        //Wait for the footer
+        //Wait for the footer with different text
+        WebElement footerWithDiffText = Utility.waitElementAndGetIfDiffText(By.xpath(footerXPath), initialFooterText);
 
-        //use this than counting the row number
-        //before clicking the filter button get the value of the footer
-        //then click then wait till the value is not the same
-        // use ExpectedConditions.not() so selenium will wait until it is not the same
-
-        Thread.sleep(1000);
-        List<WebElement> rows = Utility.findListOfElements(By.cssSelector("table tbody"));
-
-        return rows.size() > 1;
+        return footerWithDiffText.getText().equalsIgnoreCase("No members found");
     }
 
     public void memberExist() {
-        By editSelect = By.cssSelector("table tbody tr td:last-of-type a:nth-of-type(2)");
-        WebElement edit = utils.waitForElement(editSelect);
-        edit.click();
+        By editMemberInfoAnchor = By.cssSelector("table tbody tr td:last-of-type a:nth-of-type(2)");
+        Utility.waitForElement(editMemberInfoAnchor).click();
         editMemberInfo();
     }
 
     public void createNewMember() {
-        WebElement newMember = utils.waitForElement(By.cssSelector("a[href='/53/members/new']"));
-        newMember.click();
+        By newMemberButton = By.cssSelector("a[href='/53/members/new']");
+        Utility.waitForElement(newMemberButton).click();
         editMemberInfo();
     }
 

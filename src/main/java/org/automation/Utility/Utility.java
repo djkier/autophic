@@ -51,6 +51,10 @@ public class Utility {
         return driver.findElement(element);
     }
 
+    public static WebElement waitElementAndGetIfDiffText (By element, String text) {
+        return waitElementAndGetIfDiffText(element, text, DriverManager.getDriver());
+    }
+
 
     public static void clickElement (By element, WebDriver driver) {
         driver.findElement(element).click();
@@ -59,6 +63,7 @@ public class Utility {
     public static void clickElement (By element) {
         clickElement(element, DriverManager.getDriver());
     }
+
 
     public static List<WebElement> findListOfElements(By element, WebDriver driver) {
         return driver.findElements(element);
