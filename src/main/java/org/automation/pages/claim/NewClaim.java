@@ -4,13 +4,9 @@ import org.automation.Utility.*;
 import org.automation.informationcontroller.PatientBabyInterface;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import java.sql.Driver;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.List;
 
 public class NewClaim {
     private PatientBabyInterface pbInfo;

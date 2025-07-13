@@ -30,17 +30,18 @@ public class Claims {
         //delete after testing
         //Click testing claim
         Utility.waitAndClickElement(By.cssSelector("a[href=\"/53/claims\"]"));
-
-        NewClaim newClaim = new NewClaim(this.pbInfo, this.memberNumber);
-        newClaim.createClaim();
+//
+//        NewClaim newClaim = new NewClaim(this.pbInfo, this.memberNumber);
+//        newClaim.createClaim();
 
         //delete after testing
         //Claim Form 1 page
-//        utils.clickerWait(By.xpath("//*[@id=\"claimTabs\"]/li[3]/a"));
-//        utils.clickerWait(By.xpath("//*[@id=\"form-one\"]/div[1]/div/a"));
+        Utility.waitAndClickElement(By.xpath("/html/body/main/div/table/tbody/tr[1]/td[1]/a"));
+        Utility.waitAndClickElement(By.xpath("//*[@id=\"claimTabs\"]/li[3]/a"));
+        Utility.waitAndClickElement(By.xpath("//*[@id=\"form-one\"]/div[1]/div/a"));
 
-//        CF1 cf1 = new CF1(driver, pbInfo);
-//        cf1.action();
+        CF1 cf1 = new CF1(pbInfo);
+        cf1.action();
 //
 //        //delete after testing
 //        //Claim Form 2 page
