@@ -1,5 +1,6 @@
 package org.automation.pages.claim;
 
+import org.automation.Utility.Utility;
 import org.automation.Utility.Utils;
 import org.automation.informationcontroller.BabyInfo;
 import org.automation.informationcontroller.PatientBabyInterface;
@@ -13,90 +14,83 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class CF2Information {
-    private WebDriver driver;
-    private Utils utils;
     private PatientBabyInterface pbInfo;
 
-    public CF2Information(WebDriver driver, PatientBabyInterface pbInfo) {
-        this.driver = driver;
-        this.utils = new Utils(driver);
+    public CF2Information(PatientBabyInterface pbInfo) {
         this.pbInfo = pbInfo;
     }
 
 
-    public void action() throws InterruptedException {
+    public void action() {
         //Patient disposition
-        utils.clickerWait(By.id("form_two_patient_disposition"));
-        utils.clickerWait(By.xpath("//*[@id=\"form_two_patient_disposition\"]/option[2]"));
-        Thread.sleep(1000);
-        //Type of disposition
-        utils.clickerWait(By.id("form_two_accommodation_type_private"));
+        Utility.waitAndClickElement(By.id("form_two_patient_disposition"));
+        Utility.waitAndClickElement(By.xpath("//*[@id=\"form_two_patient_disposition\"]/option[2]"));
+//        Thread.sleep(1000);
+        //Type of accomodation
+        Utility.waitAndClickElement(By.id("form_two_accommodation_type_private"));
         //Input admission diagnosis
-        WebElement admissionDiagnosis = utils.waitForElement(By.id("form_two_admission_diagnosis"));
-        utils.replaceInputValues(admissionDiagnosis, pbInfo.addDia());
+        Utility.waitReplaceInputValues(By.id("form_two_admission_diagnosis"), pbInfo.addDia());
 
         //Open discharge diagnoses
-        utils.clicker(By.className("add-discharge-diagnosis"));
+        Utility.waitAndClickElement(By.className("add-discharge-diagnosis"));
         //Input discharge diagnosis
-        WebElement dischargeDiagnosis = utils.waitForElement(By.cssSelector("#discharge_diagnoses textarea"));
-        utils.replaceInputValues(dischargeDiagnosis, pbInfo.disDia());
+        Utility.waitReplaceInputValues(By.cssSelector("#discharge_diagnoses textarea"), pbInfo.disDia());
         //ICD code
-        utils.clicker(By.cssSelector("#discharge_diagnoses div.icd-codes-container div div a"));
-        WebElement icdCode = utils.waitForElement(By.xpath("//*[@id=\"select2-drop\"]/div/input"));
-        utils.replaceInputValues(icdCode, pbInfo.getIcd());
-        utils.clickerWait(By.xpath("//*[@id=\"select2-drop\"]/ul/li/div"));
+        Utility.waitAndClickElement(By.cssSelector("#discharge_diagnoses div.icd-codes-container div div a"));
+        Utility.waitReplaceInputValues(By.xpath("//*[@id=\"select2-drop\"]/div/input"), pbInfo.getIcd());
+        Utility.waitAndClickElement(By.xpath("//*[@id=\"select2-drop\"]/ul/li/div"));
 
         //Add procedure
-        utils.clicker(By.cssSelector("#discharge_diagnoses div div.panel-body table tfoot tr td a"));
+        Utility.waitAndClickElement(By.cssSelector("#discharge_diagnoses div div.panel-body table tfoot tr td a"));
         //RVS date first so the unchanged value of rvs could use
         String pathToRelativeRVS = "//*[@id='discharge_diagnoses']//span[normalize-space(text())='RVS Code or description']/ancestor::tr/td[3]/div/input";
-        WebElement dateRVS = utils.waitForElement(By.xpath(pathToRelativeRVS));
-        utils.replaceInputValues(dateRVS, pbInfo.getAdmissionDate().toString());
+        Utility.waitReplaceInputValues(By.xpath(pathToRelativeRVS), pbInfo.getAdmissionDate().toString());
         //RVS code
-        utils.clickerWait(By.xpath("//*[@id='discharge_diagnoses']//span[normalize-space(text())='RVS Code or description']"));
-        WebElement rvsCode = utils.waitForElement(By.xpath("//*[@id=\"select2-drop\"]/div/input"));
-        utils.replaceInputValues(rvsCode, pbInfo.getRvs());
-        utils.clickerWait(By.xpath("//*[@id=\"select2-drop\"]/ul/li/div"));
+        Utility.waitAndClickElement(By.xpath("//*[@id='discharge_diagnoses']//span[normalize-space(text())='RVS Code or description']"));
+        Utility.waitReplaceInputValues(By.xpath("//*[@id=\"select2-drop\"]/div/input"), pbInfo.getRvs());
+        Utility.waitAndClickElement(By.xpath("//*[@id=\"select2-drop\"]/ul/li/div"));
 
         if (pbInfo instanceof PatientInfo) {
-            motherCF2(pbInfo);
+            PatientInfo mother = (PatientInfo) pbInfo;
+            motherCF2(mother);
         } else  {
-            babyCF2(pbInfo);
+            BabyInfo baby = (BabyInfo) pbInfo;
+            babyCF2(baby);
         }
 
         //submit
-        utils.clicker(By.cssSelector("input[name=\"commit\"]"));
+        Utility.clickElement(By.cssSelector("input[name=\"commit\"]"));
     }
 
-    public void motherCF2(PatientBabyInterface pbi) {
-        PatientInfo mother = (PatientInfo) pbi;
-        utils.clicker(By.id("form_two_did_maternal_care_package"));
+    public void motherCF2(PatientInfo mother) {
+        Utility.clickElement(By.id("form_two_did_maternal_care_package"));
         String targetInput = "//*[@id=\"special-considerations\"]//label[normalize-space(text())='Prenatal Checkup Date']/following-sibling::div//input";
-        utils.waitForElement(By.xpath(targetInput));
-        List<WebElement> prenatalDate = driver.findElements(By.xpath(targetInput));
+        Utility.waitForElement(By.xpath(targetInput));
+        List<WebElement> prenatalDate = Utility.findListOfElements(By.xpath(targetInput));
         List<LocalDate> datesOfCheckUps = mother.getCheckUpDates();
         for (int i = 0; i < datesOfCheckUps.size(); i++) {
-            WebElement prenatalDateTextField = utils.waitForElement(prenatalDate.get(i));
-            utils.replaceInputValues(prenatalDateTextField, datesOfCheckUps.get(i).toString());
+            WebElement prenatalDateTextField = Utility.waitForElement(prenatalDate.get(i));
+            Utility.replaceInputValues(prenatalDateTextField, datesOfCheckUps.get(i).toString());
         }
     }
 
-    public void babyCF2(PatientBabyInterface pbInfo) {
-        BabyInfo baby = (BabyInfo) pbInfo;
-        utils.clicker(By.id("form_two_did_ncp"));
-        utils.clickerWait(By.id("form_two_did_ncp_essential_newborn_care"));
+    public void babyCF2(BabyInfo baby) {
+        //Click Newborn Care Package
+        Utility.clickElement(By.id("form_two_did_ncp"));
+
+        Utility.waitAndClickElement(By.id("form_two_did_ncp_essential_newborn_care"));
 //        Newborn hearing screening test
-//        utils.clickerWait(By.id("form_two_did_ncp_newborn_hearing_screening_test"));
-        utils.clickerWait(By.id("form_two_did_ncp_newborn_screening_test"));
-        utils.clickerWait(By.id("form_two_did_ncp_essential_drying"));
-        utils.clicker(By.id("form_two_did_ncp_essential_skin_to_skin"));
-        utils.clicker(By.id("form_two_did_ncp_essential_cord_clamping"));
-        utils.clicker(By.id("form_two_did_ncp_essential_prophylaxis"));
-        utils.clicker(By.id("form_two_did_ncp_essential_weighing"));
-        utils.clicker(By.id("form_two_did_ncp_essential_vitamin_k"));
-        utils.clicker(By.id("form_two_did_ncp_essential_bcg"));
-        utils.clicker(By.id("form_two_did_ncp_essential_non_separation"));
-        utils.clicker(By.id("form_two_did_ncp_essential_hepatitis_b"));
-        utils.replaceInputValues(By.id("form_two_did_ncp_newborn_screening_test_filter_card_number"), baby.getNbs());
+//        Utility.waitAndClickElement(By.id("form_two_did_ncp_newborn_hearing_screening_test"));
+        Utility.waitAndClickElement(By.id("form_two_did_ncp_newborn_screening_test"));
+        Utility.waitAndClickElement(By.id("form_two_did_ncp_essential_drying"));
+        Utility.waitAndClickElement(By.id("form_two_did_ncp_essential_skin_to_skin"));
+        Utility.waitAndClickElement(By.id("form_two_did_ncp_essential_cord_clamping"));
+        Utility.waitAndClickElement(By.id("form_two_did_ncp_essential_prophylaxis"));
+        Utility.waitAndClickElement(By.id("form_two_did_ncp_essential_weighing"));
+        Utility.waitAndClickElement(By.id("form_two_did_ncp_essential_vitamin_k"));
+        Utility.waitAndClickElement(By.id("form_two_did_ncp_essential_bcg"));
+        Utility.waitAndClickElement(By.id("form_two_did_ncp_essential_non_separation"));
+        Utility.waitAndClickElement(By.id("form_two_did_ncp_essential_hepatitis_b"));
+        Utility.replaceInputValues(By.id("form_two_did_ncp_newborn_screening_test_filter_card_number"), baby.getNbs());
     }
 }

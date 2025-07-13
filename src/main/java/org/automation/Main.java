@@ -113,7 +113,7 @@ public class Main {
         mother.action();
 
 //        //Baby Automation
-//        Claims baby = new Claims(driver, info, false);
+//        Claims baby = new Claims(driver, info.getBaby(), info.getMember().getId());
 //        baby.action();
 //
 //

@@ -83,12 +83,22 @@ public class Utility {
 
     public static void replaceInputValues (By element, String text, WebDriver driver) {
         WebElement inputBox = driver.findElement(element);
-        inputBox.clear();
-        inputBox.sendKeys(text);
+        replaceInputValues(inputBox, text);
     }
 
     public static void replaceInputValues (By element, String text) {
         replaceInputValues(element, text, DriverManager.getDriver());
+    }
+
+    public static void waitReplaceInputValues(By element, String text) {
+        WebElement inputBox = waitForElement(element);
+        inputBox.clear();
+        inputBox.sendKeys(text);
+    }
+
+    public static void replaceInputValues(WebElement element, String text) {
+        element.clear();
+        element.sendKeys(text);
     }
 
 }
