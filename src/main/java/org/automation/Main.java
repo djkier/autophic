@@ -1,5 +1,7 @@
 package org.automation;
 
+import org.automation.Utility.DriverManager;
+import org.automation.Utility.Utility;
 import org.automation.informationcontroller.Controller;
 import org.automation.pages.Claims;
 import org.automation.Utility.Utils;
@@ -16,17 +18,22 @@ public class Main {
 
         //create
         WebDriver driver = new EdgeDriver();
-        Utils utils = new Utils(driver);
+        DriverManager.setDriver(driver);
         //open website
         driver.manage().window().maximize();
         driver.get(Config.get("website"));
 
-        //log-in
+        //delete this utils after refactoring
+        Utils utils = new Utils(driver);
 
-        WebElement userEmail = utils.waitForElement(By.id("user_email"));
+        //log-in
+        WebElement userEmail = Utility.waitForElement(By.id("user_email"));
+        WebElement userPassword = Utility.waitForElement(By.id("user_password"));
+        WebElement submit = Utility.waitForElement(By.name("commit"));
+
         userEmail.sendKeys(Config.get("userEmail"));
-        driver.findElement(By.id("user_password")).sendKeys(Config.get("userPassword"));
-        driver.findElement(By.name("commit")).click();
+        userPassword.sendKeys(Config.get("userPassword"));
+        submit.click();
 
 //        Member Automation
         Member member = new Member(driver, info);
@@ -34,18 +41,18 @@ public class Main {
 
         //delete after testing
         //Go back to the main page
-        utils.clickerWait(By.cssSelector("a[href=\"/53/claims\"]"));
-
-
-        //Patient Automation
-        Claims mother = new Claims(driver, info, true);
-        mother.action();
-
-        //Baby Automation
-        Claims baby = new Claims(driver, info, false);
-        baby.action();
-
-
-
+//        utils.clickerWait(By.cssSelector("a[href=\"/53/claims\"]"));
+//
+//
+//        //Patient Automation
+//        Claims mother = new Claims(driver, info, true);
+//        mother.action();
+//
+//        //Baby Automation
+//        Claims baby = new Claims(driver, info, false);
+//        baby.action();
+//
+//
+//        driver.quit();
     }
 }

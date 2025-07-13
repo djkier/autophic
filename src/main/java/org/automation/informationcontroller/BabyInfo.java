@@ -21,9 +21,13 @@ public class BabyInfo extends PatientBabyCommon {
 
     @Override
     public String addDia() {
-        return "Term and live baby " + super.getGender() +
+        String genderEquiv = super.getGender().equalsIgnoreCase("male") ? "boy" : "girl";
+
+        return "Term and live baby " +
+                genderEquiv +
                 " in Cephalic Presentation Body Weight - " +
-                this.weight + " grams A/S - 9,10";
+                this.weight +
+                " grams A/S - 9,10";
     }
 
     @Override

@@ -1,5 +1,6 @@
 package org.automation.pages;
 
+import org.automation.Utility.Utility;
 import org.automation.Utility.Utils;
 import org.automation.informationcontroller.Controller;
 import org.automation.informationcontroller.MemberInfo;
@@ -25,7 +26,8 @@ public class Member {
     }
 
     public void action() throws InterruptedException {
-        WebElement memberTab = utils.waitForElement(By.cssSelector("a[href=\"/53/members\""));
+
+        WebElement memberTab = Utility.waitForElement(By.cssSelector("a[href=\"/53/members\""));
         memberTab.click();
 
         if (checkMember()) {
@@ -40,11 +42,26 @@ public class Member {
     }
 
     public boolean checkMember() throws InterruptedException {
-        WebElement inputIdNo = utils.waitForElement(By.cssSelector("input[id=\"q_phic_id_number_start\""));
+        //Select input box for philhealth number
+        WebElement inputIdNo = Utility.waitForElement(By.id("q_phic_id_number_start"));
         inputIdNo.sendKeys(info.getId());
-        driver.findElement(By.cssSelector("button[type=\"submit\"")).click();
-        Thread.sleep(500);
-        List<WebElement> rows = driver.findElements(By.cssSelector("table tbody"));
+
+        //Get the footer info for reference
+        String footerXPath = "/html/body/main/div/table/tfoot/tr/td[1]/div";
+        String initialFooterText = Utility.waitForElement(By.xpath(footerXPath)).getText();
+
+        //Click Apply filter
+        Utility.waitAndClickElement(By.cssSelector("#member_search > button"));
+
+        //Wait for the footer
+
+        //use this than counting the row number
+        //before clicking the filter button get the value of the footer
+        //then click then wait till the value is not the same
+        // use ExpectedConditions.not() so selenium will wait until it is not the same
+
+        Thread.sleep(1000);
+        List<WebElement> rows = Utility.findListOfElements(By.cssSelector("table tbody"));
 
         return rows.size() > 1;
     }

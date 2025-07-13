@@ -17,45 +17,50 @@ public class Controller {
         this.patient = new PatientInfo();
         this.baby = new BabyInfo();
         //delete this
-        this.accreNo = Config.get("accreNo");
+//        this.accreNo = Config.get("accreNo");
+        this.accreNo = "3000";
+//        this.accreNo = "1302";
     }
 
     public MemberInfo getMember(){
-        member.setGenInfo("000000000012", "Firstest", "Middletest", "Lastest", "", "1990-02-28", "female");
-        String address = "169 Sauyo Road, Novaliches, Quezon City";
-        member.setInfo("Indigent", address, "1116", "09569123456", "", "");
+        member.setGenInfo("000000000001", "Test First", "Test Second", "Test Last", "", "1995-09-01", "female");
+        String address = "Street Name, Brgy. Name, Name City, Country Name";
+        member.setInfo("Individually Paying", address, "1116", "09565645645", "", "");
 
         return member;
     }
 
+
+
+
+
     public PatientInfo getPatient() {
         ArrayList<LocalDate> checkup = new ArrayList<>();
-        LocalDate adDay = LocalDate.of(2025, 3, 12);
-        LocalDate disDay = LocalDate.of(2025,3,13);
-        LocalTime adTime = LocalTime.of(7,54);
-        LocalTime disTime = LocalTime.of(13, 24);
-        patient.setGenInfo("000000000012", "Firstest", "Middletest", "Lastest", "", "1990-02-28", "female");
-//        patient.setGenInfo("000000000012","PatientF", "PatientMiddletest", "PatientLastest", "", "1990-02-28", "female");
+        LocalDate adDay = LocalDate.of(2025, 5, 22);
+        LocalDate disDay = LocalDate.of(2025,5,23);
+        LocalTime adTime = LocalTime.of(5,51);
+        LocalTime disTime = LocalTime.of(9, 1);
+        patient.setGenInfo("000000000001", "Test First", "Test Second", "Test Last", "", "1995-09-01", "female");
         patient.setDate(adDay, disDay, adTime, disTime);
 
-        checkup.add(LocalDate.of(2024,4,21));
-        checkup.add(LocalDate.of(2024,5,27));
-        checkup.add(LocalDate.of(2024,6,28));
-        checkup.add(LocalDate.of(2025,1,31));
-        patient.setPatientInfo(1, 0, "1001", "36.5", "male", checkup);
+        checkup.add(LocalDate.of(2024,10,18));
+        checkup.add(LocalDate.of(2024,11,14));
+        checkup.add(LocalDate.of(2024,12,16));
+        checkup.add(LocalDate.of(2025,5,14));
+        patient.setPatientInfo(5, 4, "4004", "38.1", "boy", checkup);
         patient.setAccreNo(accreNo);
 
         return patient;
     }
 
     public BabyInfo getBaby() {
-        LocalDate adDay = LocalDate.of(2025, 3, 12);
-        LocalDate disDay = LocalDate.of(2025,3,13);
-        LocalTime adTime = LocalTime.of(13,18);
-        LocalTime disTime = LocalTime.of(13, 24);
-        baby.setGenInfo("000000000000","BabyF", "BabyM", "BabyL", "", LocalDate.now().toString(), "male");
+        LocalDate adDay = LocalDate.of(2025, 5, 22);
+        LocalDate disDay = LocalDate.of(2025,5,23);
+        LocalTime adTime = LocalTime.of(17,6);
+        LocalTime disTime = LocalTime.of(20, 30);
+            baby.setGenInfo("000000000000","JOHN DOE", "DELA CRUZ", "DEL MONTE", "", adDay.toString(), "male");
         baby.setDate(adDay, disDay, adTime, disTime);
-        baby.setBabyInfo(3000, "32682527");
+        baby.setBabyInfo(3300, "00000000");
         baby.setAccreNo(accreNo);
 
         return baby;

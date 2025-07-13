@@ -76,7 +76,8 @@ public class CF2Information {
         List<WebElement> prenatalDate = driver.findElements(By.xpath(targetInput));
         List<LocalDate> datesOfCheckUps = mother.getCheckUpDates();
         for (int i = 0; i < datesOfCheckUps.size(); i++) {
-            utils.replaceInputValues(prenatalDate.get(i), datesOfCheckUps.get(i).toString());
+            WebElement prenatalDateTextField = utils.waitForElement(prenatalDate.get(i));
+            utils.replaceInputValues(prenatalDateTextField, datesOfCheckUps.get(i).toString());
         }
     }
 

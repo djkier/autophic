@@ -15,10 +15,12 @@ public class CalendarPath {
         return this.mySelector + "/div[1]/table/thead/tr[1]";
     }
 
+    //Calendar ui path
     public String getCalSelector() {
         return this.calSelector + "/div/span";
     }
 
+    //Month and Year path
     public String getMYSelector() {
         return getHeaderSelector() + "/th[2]";
     }

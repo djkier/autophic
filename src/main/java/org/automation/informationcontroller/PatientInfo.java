@@ -41,7 +41,7 @@ public class PatientInfo extends PatientBabyCommon {
 
     @Override
     public String disDia() {
-        return gp(1) + "NSD to a live and term baby " +
+        return gp(1) + " NSD to a live and term baby " +
                 this.babyGender + " in Cephalic Presentation";
     }
 

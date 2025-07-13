@@ -3,6 +3,7 @@ package org.automation.pages.claim;
 import org.automation.Utility.*;
 import org.automation.informationcontroller.PatientBabyInterface;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -28,11 +29,11 @@ public class NewClaim {
     }
 
     public void createClaim() {
-        //create new claim from the main page
+        //Click the "New Claim" button from the main page
         WebElement newClaim = utils.waitForElement(By.cssSelector("a[href=\"/53/claims/new\"]"));
         newClaim.click();
 
-        //search for member
+        //Search for Member then choose
         WebElement findMember = utils.waitForElement(By.xpath("//span[text()=\"Enter PhilHealth ID...\"]"));
         findMember.click();
         utils.replaceInputValues(By.cssSelector("div[class=\"select2-search\"] input"), memberIdNo);
@@ -41,17 +42,19 @@ public class NewClaim {
 
         //Calendar set Up
         //Constant Paths
-        CalendarPath admission = calendar.getAdmission();
-        TimePath adTime = time.getAdmission();
-        CalendarPath discharge = calendar.getDischarge();
-        TimePath disTime = time.getDischarge();
+        CalendarPath admissionDayPath = calendar.getAdmission();
+        TimePath admissionTimePath = time.getAdmission();
+        CalendarPath dischargeDayPath = calendar.getDischarge();
+        TimePath dischargeTimePath = time.getDischarge();
 
-        chooseDateAndTime(admission, adTime, pbInfo.getAdmissionDate(), pbInfo.getAdmissionTime());
-        //inpatient radio picker
+        //Choose date and time of Admission
+        chooseDateAndTime(admissionDayPath, admissionTimePath, pbInfo.getAdmissionDate(), pbInfo.getAdmissionTime());
+        //Pick from the type of patient to close the Date and Time UI of admission
         driver.findElement(By.id("claim_admission_type_inpatient")).click();
-        chooseDateAndTime(discharge, disTime, pbInfo.getDischargeDate(), pbInfo.getDischargeTime());
+        //Choose date and time of Discharge
+        chooseDateAndTime(dischargeDayPath, dischargeTimePath, pbInfo.getDischargeDate(), pbInfo.getDischargeTime());
 
-        //submit
+        //Create Claim
         utils.clicker(By.cssSelector("input[name=\"commit\"]"));
 
 
@@ -59,9 +62,10 @@ public class NewClaim {
 
     public void chooseDateAndTime(CalendarPath visDate, TimePath visTime, LocalDate date, LocalTime time) {
 
+        //Make calendar and time ui visible
         makeCalendarAppear(visDate.getCalSelector());
-        checkMonthAndYear(visDate, date);
-        chooseTime(visTime, time);
+//        chooseMonthAndYear(visDate, date);
+//        chooseTime(visTime, time);
     }
 
     public void chooseTime(TimePath tag, LocalTime getTime) {
@@ -94,7 +98,8 @@ public class NewClaim {
         }
     }
 
-    public void checkMonthAndYear(CalendarPath tag, LocalDate date) {
+    public void chooseMonthAndYear(CalendarPath tag, LocalDate date) {
+        //Get web element for checking the month and year
         WebElement monthYear = utils.waitForElement(By.xpath(tag.getMYSelector()));
         WebElement leftArrow = driver.findElement(By.xpath(tag.getLeftArrow()));
 
@@ -141,7 +146,9 @@ public class NewClaim {
     public void makeCalendarAppear(String tag){
 
         WebElement calendarUIAppear = utils.waitForElement(By.xpath(tag));
-        calendarUIAppear.click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click()", calendarUIAppear);
+//        calendarUIAppear.click();
     }
 
 }
