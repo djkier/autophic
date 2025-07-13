@@ -1,27 +1,21 @@
 package org.automation.pages;
 
 import org.automation.Utility.Utility;
-import org.automation.Utility.Utils;
-import org.automation.informationcontroller.Controller;
 import org.automation.informationcontroller.PatientBabyInterface;
 import org.automation.pages.claim.CF1;
 import org.automation.pages.claim.CF2Benefits;
 import org.automation.pages.claim.CF2Information;
 import org.automation.pages.claim.NewClaim;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+
 
 public class Claims {
-    private WebDriver driver;
     private PatientBabyInterface pbInfo;
     private String memberNumber;
-    private Utils utils;
 
-    public Claims(WebDriver driver, PatientBabyInterface specificInfo, String memberNumber) {
-        this.driver = driver;
+    public Claims(PatientBabyInterface specificInfo, String memberNumber) {
         this.pbInfo = specificInfo;
         this.memberNumber = memberNumber;
-        this.utils = new Utils(driver);
     }
 
 
