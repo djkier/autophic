@@ -1,13 +1,10 @@
 package org.automation.pages.claim;
 
 import org.automation.Utility.Utility;
-import org.automation.Utility.Utils;
 import org.automation.informationcontroller.BabyInfo;
 import org.automation.informationcontroller.PatientBabyInterface;
 import org.automation.informationcontroller.PatientInfo;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.time.LocalDate;

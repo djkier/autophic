@@ -105,19 +105,18 @@ public class Main {
         submit.click();
 
 //        Member Automation
-//        Member member = new Member(info.getMember());
-//        member.action();
+        Member member = new Member(info.getMember());
+        member.action();
 
         //Patient Automation
         Claims mother = new Claims(driver, info.getPatient(), info.getMember().getId());
         mother.action();
 
 //        //Baby Automation
-//        Claims baby = new Claims(driver, info.getBaby(), info.getMember().getId());
-//        baby.action();
+        Claims baby = new Claims(driver, info.getBaby(), info.getMember().getId());
+        baby.action();
 //
 //
-//        System.out.println("Close Browser");
-//        driver.quit();
+        driver.quit();
     }
 }
