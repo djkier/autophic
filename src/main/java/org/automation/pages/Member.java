@@ -12,8 +12,8 @@ public class Member {
     private final MemberInfo info;
     private boolean existing;
 
-    public Member(Controller info){
-        this.info = info.getMember();
+    public Member(MemberInfo info){
+        this.info = info;
         this.existing = true;
     }
 
