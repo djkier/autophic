@@ -39,15 +39,10 @@ public class Main {
         Member member = new Member(info);
         member.action();
 
-        //delete after testing
-        //Go back to the main page
-//        utils.clickerWait(By.cssSelector("a[href=\"/53/claims\"]"));
-//
-//
-//        //Patient Automation
-//        Claims mother = new Claims(driver, info, true);
-//        mother.action();
-//
+        //Patient Automation
+        Claims mother = new Claims(driver, info, true);
+        mother.action();
+
 //        //Baby Automation
 //        Claims baby = new Claims(driver, info, false);
 //        baby.action();
