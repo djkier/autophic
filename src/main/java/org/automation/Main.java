@@ -50,7 +50,7 @@ public class Main {
         info.setPatientInfo(
                 LocalDate.of(2025, 5, 22),
                 LocalDate.of(2025, 5, 23),
-                LocalTime.of(5, 51),
+                LocalTime.of(5, 1),
                 LocalTime.of(9,1),
                 "000000000010",
                 "Test First",
