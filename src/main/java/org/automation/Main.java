@@ -36,7 +36,7 @@ public class Main {
         submit.click();
 
 //        Member Automation
-        Member member = new Member(driver, info);
+        Member member = new Member(info);
         member.action();
 
         //delete after testing
@@ -53,6 +53,7 @@ public class Main {
 //        baby.action();
 //
 //
-//        driver.quit();
+        System.out.println("Close Browser");
+        driver.quit();
     }
 }
