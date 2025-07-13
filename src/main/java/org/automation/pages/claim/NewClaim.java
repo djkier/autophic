@@ -16,36 +16,30 @@ public class NewClaim {
     private Utils utils;
     private PatientBabyInterface pbInfo;
     private String memberIdNo;
-    private Calendar calendar;
-    private Time time;
 
     public NewClaim(WebDriver driver, PatientBabyInterface pbInfo, String memberIdNo) {
         this.driver = driver;
         this.utils = new Utils(driver);
         this.pbInfo = pbInfo;
         this.memberIdNo = memberIdNo;
-        this.calendar = new Calendar();
-        this.time = new Time();
     }
 
     public void createClaim() {
         //Click the "New Claim" button from the main page
-        WebElement newClaim = utils.waitForElement(By.cssSelector("a[href=\"/53/claims/new\"]"));
-        newClaim.click();
+        Utility.waitAndClickElement(By.cssSelector("a[href=\"/53/claims/new\"]"));
 
         //Search for Member then choose
-        WebElement findMember = utils.waitForElement(By.xpath("//span[text()=\"Enter PhilHealth ID...\"]"));
-        findMember.click();
-        utils.replaceInputValues(By.cssSelector("div[class=\"select2-search\"] input"), memberIdNo);
-        WebElement memberAppeared = utils.waitForElement(By.cssSelector("ul.select2-results li:first-of-type div"));
-        memberAppeared.click();
+        Utility.waitAndClickElement(By.xpath("//span[text()=\"Enter PhilHealth ID...\"]"));
+        Utility.replaceInputValues(By.cssSelector("div[class=\"select2-search\"] input"), memberIdNo);
+        Utility.waitAndClickElement(By.cssSelector("ul.select2-results li:first-of-type div"));
 
         //Calendar set Up
         //Constant Paths
-        CalendarPath admissionDayPath = calendar.getAdmission();
-        TimePath admissionTimePath = time.getAdmission();
-        CalendarPath dischargeDayPath = calendar.getDischarge();
-        TimePath dischargeTimePath = time.getDischarge();
+        CalendarPath admissionDayPath = new CalendarPath(2);
+        TimePath admissionTimePath = new TimePath(2);
+
+        CalendarPath dischargeDayPath = new CalendarPath(3);
+        TimePath dischargeTimePath = new TimePath(3);
 
         //Choose date and time of Admission
         chooseDateAndTime(admissionDayPath, admissionTimePath, pbInfo.getAdmissionDate(), pbInfo.getAdmissionTime());
@@ -55,7 +49,7 @@ public class NewClaim {
         chooseDateAndTime(dischargeDayPath, dischargeTimePath, pbInfo.getDischargeDate(), pbInfo.getDischargeTime());
 
         //Create Claim
-        utils.clicker(By.cssSelector("input[name=\"commit\"]"));
+//        utils.clicker(By.cssSelector("input[name=\"commit\"]"));
 
 
     }

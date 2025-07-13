@@ -18,6 +18,8 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 
+
+        //Create a new class for the information
         Controller info = new Controller();
 
         String address = "Street Name, Brgy. Name, Name City, Country Name";
@@ -103,11 +105,11 @@ public class Main {
         submit.click();
 
 //        Member Automation
-        Member member = new Member(info.getMember());
-        member.action();
+//        Member member = new Member(info.getMember());
+//        member.action();
 
         //Patient Automation
-        Claims mother = new Claims(driver, info, info.getPatient());
+        Claims mother = new Claims(driver, info.getPatient(), info.getMember().getId());
         mother.action();
 
 //        //Baby Automation
@@ -115,7 +117,7 @@ public class Main {
 //        baby.action();
 //
 //
-        System.out.println("Close Browser");
-        driver.quit();
+//        System.out.println("Close Browser");
+//        driver.quit();
     }
 }

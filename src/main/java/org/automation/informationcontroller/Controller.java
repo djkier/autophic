@@ -80,7 +80,7 @@ public class Controller {
                             String nbs,
                             String accreditationNo
     ) {
-        baby.setGenInfo("000000000000",firstName, middleName, lastName, suffix, admissionDay.toString(), gender);
+        baby.setGenInfo("000000000000", firstName, middleName, lastName, suffix, admissionDay.toString(), gender);
         baby.setDate(admissionDay, dischargeDay, admissionTime, dischargeTime);
         baby.setBabyInfo(weight, nbs);
         baby.setAccreNo(accreditationNo);

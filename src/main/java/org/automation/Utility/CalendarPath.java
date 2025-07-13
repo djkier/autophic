@@ -1,23 +1,19 @@
 package org.automation.Utility;
 
 public class CalendarPath {
-    public String calSelector;
-    public String mySelector;
-    public String pickDay;
+    private int num;
 
-    public CalendarPath(String calSelector, String mySelector, String pickDay) {
-        this.calSelector = calSelector;
-        this.mySelector = mySelector;
-        this.pickDay = pickDay;
+    public CalendarPath(int num) {
+        this.num = num;
     }
 
     private String getHeaderSelector() {
-        return this.mySelector + "/div[1]/table/thead/tr[1]";
+        return "//div[" + num + "]/div/div[1]/div[1]/table/thead/tr[1]";
     }
 
     //Calendar ui path
     public String getCalSelector() {
-        return this.calSelector + "/div/span";
+        return "//div[" + num + "]/div/div/span";
     }
 
     //Month and Year path
@@ -30,7 +26,7 @@ public class CalendarPath {
     }
 
     public String getDays() {
-        return this.pickDay + "/div[1]/table/tbody//td[@class='day']";
+        return "//div[" + num + "]/div/div[1]/div[1]/table/tbody//td[@class='day']";
     }
 
 }
