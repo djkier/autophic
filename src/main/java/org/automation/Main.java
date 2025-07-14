@@ -112,8 +112,8 @@ public class Main {
         //Baby Automation
         Claims baby = new Claims(info.getBaby(), info.getMember().getId());
         baby.action();
-//
-//
-//        driver.quit();
+
+
+        driver.quit();
     }
 }

@@ -49,7 +49,7 @@ public class Claims {
         eSoa.action();
 
         //Main Page
-//        Utility.waitAndClickElement(By.cssSelector("a[href=\"/53/claims\"]"));
+        Utility.waitAndClickElement(By.cssSelector("a[href=\"/53/claims\"]"));
     }
 
 }
