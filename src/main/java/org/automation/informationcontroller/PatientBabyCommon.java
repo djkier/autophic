@@ -14,7 +14,7 @@ public abstract class PatientBabyCommon extends GeneralInformation implements Pa
     private double hciFee;
     private double profFee;
     private String patientType;
-    private String addmisionDiagnosis;
+    private String admissionDiagnosis;
     private String dischargeDiagnosis;
 
     public PatientBabyCommon() {
@@ -28,7 +28,7 @@ public abstract class PatientBabyCommon extends GeneralInformation implements Pa
         this.hciFee = 0;
         this.profFee = 0;
         this.patientType = "";
-        this.addmisionDiagnosis = "";
+        this.admissionDiagnosis = "";
         this.dischargeDiagnosis = "";
     }
 
@@ -58,7 +58,7 @@ public abstract class PatientBabyCommon extends GeneralInformation implements Pa
     }
 
     public void setAdmissionDiagnosis(String add) {
-        this.addmisionDiagnosis = add;
+        this.admissionDiagnosis = add;
     }
 
     public void setDischargeDiagnosis(String dis) {
