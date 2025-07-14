@@ -24,12 +24,14 @@ public class Esoa {
         String[] claimParts = claim.split("#");
         String claimNumber = claimParts[1];
         int profFee = 978;
+        int profFeeSubsidy = 0;
         int otherFundSource = 0;
 
 
         if (pbInfo instanceof PatientInfo) {
             profFee = Integer.parseInt(pbInfo.getAccreNo()) == 3000 ?
                     6240 : 10000;
+            profFeeSubsidy = profFee - 6240;
             otherFundSource = 45;
             newTabAction(
                     Config.get("motherWebsite"),
@@ -49,7 +51,7 @@ public class Esoa {
         Utility.waitReplaceInputValues(By.cssSelector("#esoa_professional_fees_attributes_0_charges_net_of_applicable_vat"),
                 String.valueOf(profFee));
         Utility.waitReplaceInputValues(By.cssSelector("#esoa_professional_fees_attributes_0_other_fund_source_amount"),
-                String.valueOf(profFee-6240));
+                String.valueOf(profFeeSubsidy));
         Utility.waitAndClickElement(By.cssSelector("input[label='esoa[professional_fees_attributes][0][primary]']"));
 
         //Target service date

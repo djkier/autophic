@@ -102,16 +102,16 @@ public class Main {
         submit.click();
 
         //Member Automation
-//        Member member = new Member(info.getMember());
-//        member.action();
+        Member member = new Member(info.getMember());
+        member.action();
 
         //Patient Automation
         Claims mother = new Claims(info.getPatient(), info.getMember().getId());
         mother.action();
 
         //Baby Automation
-//        Claims baby = new Claims(info.getBaby(), info.getMember().getId());
-//        baby.action();
+        Claims baby = new Claims(info.getBaby(), info.getMember().getId());
+        baby.action();
 //
 //
 //        driver.quit();
