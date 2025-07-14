@@ -41,7 +41,7 @@ public class CF2Information {
         Utility.waitAndClickElement(By.cssSelector("#discharge_diagnoses div div.panel-body table tfoot tr td a"));
         //RVS date first so the unchanged value of rvs could use
         String pathToRelativeRVS = "//*[@id='discharge_diagnoses']//span[normalize-space(text())='RVS Code or description']/ancestor::tr/td[3]/div/input";
-        Utility.waitReplaceInputValues(By.xpath(pathToRelativeRVS), pbInfo.getAdmissionDate().toString());
+        Utility.waitReplaceInputValues(By.xpath(pathToRelativeRVS), pbInfo.getServiceDate().toString());
         //RVS code
         Utility.waitAndClickElement(By.xpath("//*[@id='discharge_diagnoses']//span[normalize-space(text())='RVS Code or description']"));
         Utility.waitReplaceInputValues(By.xpath("//*[@id=\"select2-drop\"]/div/input"), pbInfo.getRvs());
