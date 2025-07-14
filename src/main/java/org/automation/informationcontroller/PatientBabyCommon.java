@@ -16,6 +16,7 @@ public abstract class PatientBabyCommon extends GeneralInformation implements Pa
     private String patientType;
     private String admissionDiagnosis;
     private String dischargeDiagnosis;
+    private LocalDate serviceDate;
 
     public PatientBabyCommon() {
         this.adDay = LocalDate.now().minusDays(1);
@@ -30,6 +31,7 @@ public abstract class PatientBabyCommon extends GeneralInformation implements Pa
         this.patientType = "";
         this.admissionDiagnosis = "";
         this.dischargeDiagnosis = "";
+        this.serviceDate = LocalDate.now();
     }
 
     @Override
@@ -65,6 +67,15 @@ public abstract class PatientBabyCommon extends GeneralInformation implements Pa
         this.dischargeDiagnosis = dis;
     }
 
+    @Override
+    public LocalDate getServiceDate() {
+        return this.serviceDate;
+    };
+
+    @Override
+    public void setServiceDate(LocalDate date) {
+        this.serviceDate = date;
+    };
 
 
     @Override
@@ -76,6 +87,7 @@ public abstract class PatientBabyCommon extends GeneralInformation implements Pa
     public LocalDate getDischargeDate() {
         return disDay;
     }
+
 
     @Override
     public LocalTime getAdmissionTime() {

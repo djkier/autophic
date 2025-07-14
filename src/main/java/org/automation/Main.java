@@ -47,7 +47,7 @@ public class Main {
         String accreNo = "1302";
 
         info.setPatientInfo(
-                LocalDate.of(2025, 5, 22),
+                LocalDate.of(2025, 5, 18),
                 LocalDate.of(2025, 5, 23),
                 LocalTime.of(5, 1),
                 LocalTime.of(9,1),
@@ -68,7 +68,7 @@ public class Main {
         );
 
         info.setBabyInfo(
-                LocalDate.of(2025, 5, 22),
+                LocalDate.of(2025, 5, 19),
                 LocalDate.of(2025, 5, 23),
                 LocalTime.of(17, 6),
                 LocalTime.of(20, 30),

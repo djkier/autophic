@@ -16,13 +16,20 @@ public interface PatientBabyInterface {
 
     void setPayment(double hci, double prof);
 
+    LocalDate getServiceDate();
+
+    void setServiceDate(LocalDate date);
+
     LocalDate getAdmissionDate();
 
     LocalDate getDischargeDate();
 
+
+
     LocalTime getAdmissionTime();
 
     LocalTime getDischargeTime();
+
 
     public String getAccreNo();
 

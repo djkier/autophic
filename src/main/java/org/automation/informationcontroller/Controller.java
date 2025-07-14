@@ -61,6 +61,8 @@ public class Controller {
 
         patient.setPatientInfo(gravida, para, tpal, aog, babyGender, checkupDates);
         patient.setAccreNo(accreNumber);
+
+        patient.setServiceDate(admissionDay);
     }
 
     public PatientInfo getPatient() {
@@ -84,6 +86,9 @@ public class Controller {
         baby.setDate(admissionDay, dischargeDay, admissionTime, dischargeTime);
         baby.setBabyInfo(weight, nbs);
         baby.setAccreNo(accreditationNo);
+
+        baby.setServiceDate(admissionDay);
+        patient.setServiceDate(admissionDay);
 
     }
 
