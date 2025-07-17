@@ -15,8 +15,8 @@ public class Controller {
         this.baby = new BabyInfo();
     }
 
-    public void setMemberInfo(String id,
-                              String membershipType,
+    public void setMemberInfo(String membershipType,
+                              String id,
                               String firstName,
                               String middleName,
                               String lastName,

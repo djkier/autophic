@@ -74,10 +74,10 @@ public class Member {
             Utility.replaceInputValues(By.id("member_phic_id_number"), info.getId());
         }
 
-        Utility.replaceInputValues(By.id("member_first_name"), info.getFN());
-        Utility.replaceInputValues(By.id("member_middle_name"), info.getMN());
-        Utility.replaceInputValues(By.id("member_last_name"), info.getLN());
-        Utility.replaceInputValues(By.id("member_name_suffix"), info.getSuffix());
+        Utility.replaceInputValues(By.id("member_first_name"), info.getFN().toUpperCase());
+        Utility.replaceInputValues(By.id("member_middle_name"), info.getMN().toUpperCase());
+        Utility.replaceInputValues(By.id("member_last_name"), info.getLN().toUpperCase());
+        Utility.replaceInputValues(By.id("member_name_suffix"), info.getSuffix().toUpperCase());
         Utility.replaceInputValues(By.id("member_birth_date"), info.getbDate());
         //gender
         Utility.clickElement(By.id("member_gender_" + info.genderValue()));
@@ -86,7 +86,7 @@ public class Member {
         Utility.replaceInputValues(By.id("member_zip_code"), info.getZipCode());
 
         Utility.replaceInputValues(By.id("member_phic_employer_number"), info.getEmployerNo());
-        Utility.replaceInputValues(By.id("member_employer_name"), info.getEmployerName());
+        Utility.replaceInputValues(By.id("member_employer_name"), info.getEmployerName().toUpperCase());
 
         mobileNumberFormatting();
 

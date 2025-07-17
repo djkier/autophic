@@ -37,10 +37,10 @@ public class CF1 {
 
     public void fillPatientInfo() {
         Utility.replaceInputValues(By.id("form_one_patient_phic_id_number"), pbInfo.getId());
-        Utility.replaceInputValues(By.id("form_one_patient_first_name"), pbInfo.getFN());
-        Utility.replaceInputValues(By.id("form_one_patient_middle_name"), pbInfo.getMN());
-        Utility.replaceInputValues(By.id("form_one_patient_last_name"), pbInfo.getLN());
-        Utility.replaceInputValues(By.id("form_one_patient_name_suffix"), pbInfo.getSuffix());
+        Utility.replaceInputValues(By.id("form_one_patient_first_name"), pbInfo.getFN().toUpperCase());
+        Utility.replaceInputValues(By.id("form_one_patient_middle_name"), pbInfo.getMN().toUpperCase());
+        Utility.replaceInputValues(By.id("form_one_patient_last_name"), pbInfo.getLN().toUpperCase());
+        Utility.replaceInputValues(By.id("form_one_patient_name_suffix"), pbInfo.getSuffix().toUpperCase());
         Utility.replaceInputValues(By.id("form_one_patient_birth_date"), pbInfo.getbDate());
 
         //Pick gender
